@@ -45,3 +45,6 @@ THINGS I DONT UNDERSTAND
 - edit.html.erb: f.password ... f.submit
 
 ran git checkout -b old-state ...
+and now things are working OK (other than not being able to change my db structure and rake db:crunch_ratings fails) so I merged this back into branch BU_hartl
+
+Try changing ratings column to type TEXT in SQLite DB Browser
