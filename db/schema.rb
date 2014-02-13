@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140213064708) do
+ActiveRecord::Schema.define(version: 20140213162426) do
 
   create_table "attributes", force: true do |t|
     t.string   "attribute_name"
@@ -38,6 +38,14 @@ ActiveRecord::Schema.define(version: 20140213064708) do
 
   add_index "microposts", ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
 
+  create_table "ratings", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "attribute_id"
+    t.float    "current_rating"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "relationships", force: true do |t|
     t.integer  "follower_id"
     t.integer  "followed_id"
@@ -49,15 +57,7 @@ ActiveRecord::Schema.define(version: 20140213064708) do
   add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
   add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id"
 
-  create_table "users", force: true do |t|
-    t.string   "name"
-    t.string   "email"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "password_digest"
-    t.string   "remember_token"
-    t.boolean  "admin"
-    t.text     "ratings"
-  end
+# Could not dump table "users" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
 end

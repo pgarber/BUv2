@@ -48,3 +48,18 @@ ran git checkout -b old-state ...
 and now things are working OK (other than not being able to change my db structure and rake db:crunch_ratings fails) so I merged this back into branch BU_hartl
 
 Try changing ratings column to type TEXT in SQLite DB Browser
+
+It's finally on github.  for some reason, it wasn't happy with the existing publickey.
+
+
+MESSING WITH DB:
+rake db:drop
+rake db:migrate (make sure password stuff is not commented out)
+rake db:populate  // puts all the Hartl stuff like users in
+rake db:seed      // puts my attributes list in the db
+rails generate migration add_ratings_to_users ratings:hash
+rake db:migrate
+  try new db format:
+rails generate controller Ratings --no-test-framework
+rails generate model Rating user_id:integer attribute_id:integer current_rating:float
+rake db:migrate
