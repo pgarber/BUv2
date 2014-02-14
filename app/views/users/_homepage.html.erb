@@ -14,12 +14,12 @@
     <br>
     <div class="container">
       <div class="row">
-        <%= render "users/signed_in_sidebar" %>
+        <%= render "users/signed_in_sidebar" %>  
         
         <div class="col-md-7">
 
           <div class="well well-sm">
-            <%= render "users/chart1" %>
+            <%= render "users/chart1" %>  <%# call for graph ######## %>
           </div>
           <div class="well well-sm">
             <h4>Competitor acquisition</h4>
@@ -39,9 +39,24 @@
             </div>
           </div>
 
-          <!-- this is the main section -->
           <div class="well well-sm">
-          <% user = User.find_by(id: "17") %>  <!-- random for now, select by recent or other later -->
+
+
+          <%# insert graphs for all coworker_chart for all users %>
+          <%#= will_paginate %> <%# put this before or after render? %>
+          <ul>
+          <!-- <ul class="coworker_charts">  -->
+            <%#= render @users %>
+
+            <%= render "users/coworker_chart" %> <%# will the coworker_chart controller set @users? %>
+          </ul>
+
+          <%#= will_paginate %> 
+
+
+
+
+          <% user = User.find_by(id: "1") %>  <!-- do first 3 for now, select by recent or other later -->
           <p><%= user.name + " | " + user.email %> </p>
           <%#= link_to user.name,  + " | " + user.email %>
           <%#= link_to current_user.name, "give_feedback"  %> <%# goes to users/show.html.erb %>

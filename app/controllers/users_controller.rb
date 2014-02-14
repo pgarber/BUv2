@@ -13,6 +13,17 @@ class UsersController < ApplicationController
     @microposts = @user.microposts.paginate(page: params[:page])
   end
 
+  def homepage
+    @user = User.find(params[:id])
+    # should it be User.all ?
+    render homepage
+  end
+
+
+  def coworker_chart
+    @user = User.paginate(page: params[:page])
+  end
+
   def new
   	@user = User.new
   end

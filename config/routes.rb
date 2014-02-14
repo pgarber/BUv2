@@ -9,7 +9,8 @@ SampleApp::Application.routes.draw do
   resources :microposts, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
 
-  root 'static_pages#home'
+  # root 'static_pages#home'
+  root 'users#home'
   match '/signup',  to: 'users#new',            via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
@@ -22,7 +23,8 @@ SampleApp::Application.routes.draw do
   match '/myfeedback', to: 'users#myfeedback',  via: 'get'
 
 
-  get "static_pages/home"  
+  #get "static_pages/home"  
+  get "users/home"
   get "static_pages/help"
   get "static_pages/about" 
   get "static_pages/contact" 

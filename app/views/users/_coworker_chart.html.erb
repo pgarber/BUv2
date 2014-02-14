@@ -1,0 +1,70 @@
+<%# test whether @users is accessible %>
+<% @users = User.all %>
+<% @ratings = Rating.all %>
+<%#= @users.first.name %>
+<%#= @users.find_by(id: 1).name %>
+
+<%# TO START, just do this for user 1.  Then, figure out how to pass an id %>
+<% user_id = 1 %> <%# todo: make dynamic %>
+<% worker_to_graph=User.find(1) %>
+
+<%# pull the data out.  show top 5 good attributes and 1 bad attribute %>
+<%= graph_data(user_id) %> <%# not sure this will work %>
+
+  <!--Load the AJAX API-->
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script type="text/javascript">
+
+
+
+    // Load the Visualization API and the piechart package.
+    google.load('visualization', '1.0', {'packages':['corechart']});
+
+    // Set a callback to run when the Google Visualization API is loaded.
+    google.setOnLoadCallback(drawChart);
+
+    // Callback that creates and populates a data table,
+    // instantiates the pie chart, passes in the data and
+    // draws it.
+    function drawChart() {
+
+      // Create the data table.
+      var data1 = new google.visualization.DataTable();
+      data1.addColumn('string', 'Attribute');
+      data1.addColumn('number', 'Rating');
+      data1.addRows([
+        5.times do 
+        [good_attributes, 7.2],
+        ['Execution', 5.5],
+
+        good_attributes.each do
+
+      ]);
+
+      // Set chart options  <%# most I can't get to work %>
+      var options = {'title':'Factory cost reduction',
+                     width:450,
+                     height:180,
+                     vAxis: { textStyle:{fontSize:15}},
+                     legend: { position:'none' },
+					 titleTextStyle:{fontSize:20},
+					 
+
+					 hAxis: { ticks: [6,7] },
+                     hAxis: { minValue: 0 }, 
+
+                     hAxis: { titleTextStyle:{fontSize:25}}
+
+                     };
+
+      // Instantiate and draw our chart, passing in some options.
+      var chart1 = new google.visualization.BarChart(document.getElementById('chart1_div'));
+      chart1.draw(data1, options);
+    }
+  </script>
+
+  <div id="chart1_div"></div>
+
+
+
+

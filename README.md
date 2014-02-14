@@ -63,3 +63,8 @@ rake db:migrate
 rails generate controller Ratings --no-test-framework
 rails generate model Rating user_id:integer attribute_id:integer current_rating:float
 rake db:migrate
+
+
+rake db:crunch_ratings
+
+so, Users still has a ratings column, but it's not being used.  I'm just having trouble deleting it

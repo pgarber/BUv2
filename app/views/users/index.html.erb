@@ -3,8 +3,8 @@
 
 <%= will_paginate %> 
 
-<ul class="users"> <%# makes it render _user.html.erb and the next line passes the user%>
-	<%= render @users %>
+<ul class="users"> <%# tells it to use the .users in custom.css.scss%>
+	<%= render @users %><%# renders _user.html.erb and passes the user%>
 </ul>
 
 <%= will_paginate %> 
