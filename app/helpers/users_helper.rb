@@ -16,14 +16,18 @@ module UsersHelper
 	  @good_attributes=Array.new
 	  @ratings = Rating.all
 	  @attributes=Attribute.all
+	  count = 1
 	  @ratings.each do |rating|
-	    if rating.user_id == target_user_id
-	      if @attributes.find_by(id: rating.attribute_id).good
-	      	#print rating.attribute_id
-	      	this_attribute_name = @attributes.find_by(id: rating.attribute_id).attribute_name
-	      	puts "this_attribute_name"
-	      	puts this_attribute_name
-	        @good_attributes.push([this_attribute_name, rating.current_rating])
+
+	    if rating.user_id == target_user_id  #if the rating is for this user
+	      if @attributes.find_by(id: rating.attribute_id).good  # and if it's a good rating
+	      	if count <= 5 # only show 5 attributes.  but this needs to be more advanced so that I show the highest rated 5
+	      	  this_attribute_name = @attributes.find_by(id: rating.attribute_id).attribute_name
+	          @good_attributes.push([this_attribute_name, rating.current_rating])
+	          count+=1
+	        print " graph_data count: #{count} "
+	        end
+
 	      end
 	    end
 	  end
@@ -48,5 +52,25 @@ module UsersHelper
 
 
 	end
+
+	def users_to_graph()
+		@show_user_id = Array.new # this array will contain 3 user_id's (in order) to graph
+		@ratings = Rating.all
+		@users = User.all
+
+		# it would be more explicit to order these by date first, but it's most likely in date order
+		last_user_id = @ratings.pop.user_id
+		count = 1  
+		while count <= 3 # go until you have 3 users identified to show	
+  		  unless @show_user_id.include?(last_user_id)
+			@show_user_id.push(last_user_id)
+			count += 1
+		  end
+		  	last_user_id = @ratings.pop.user_id
+		end
+	end
+
+
+
 
 end

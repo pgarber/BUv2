@@ -41,8 +41,6 @@
             </div>
           </div>
 
-          <div class="well well-sm">
-
 
           <%# insert graphs for all coworker_chart for all users %>
           <%#= will_paginate %> <%# put this before or after render? %>
@@ -51,122 +49,18 @@
             <%#= render @users %>
 
                     <%#= will_paginate %>
-
-          <% user = User.find_by(id: "1") %>  <!-- do first 3 for now, select by recent or other later -->
-          <p><%= user.name + " | " + user.email %> </p>
-          <%#= link_to user.name,  + " | " + user.email %>
-          <%#= link_to current_user.name, "give_feedback"  %> <%# goes to users/show.html.erb %>
-
-            <%#= render "users/chart1" %>  <%# see if I can get a working chart to render %>
-            <%#= render "users/coworker_chart" %> <%# will the coworker_chart controller set @users? %>
-            <% user_id = 1 %>
-            <%= graph_data(user_id) %>
-            <%= print "@good_attributes in _homepage" %>
-            <%= print @good_attributes %>
-
-            <%= bar_chart(@good_attributes) %>
-
-            <%#= bar_chart Shirt.group("size").sum(:price) %>
-
-
-            <div class="row">
-              <div class="col-md-5" align="right">
-                <p>Ambitious</p>
-                <p>Lead by example</p>
-                <p>Great with customers</p>
-                <p>Married to the job</p>
-                <p>Big picture thinker</p>
-                <p>Reliable</p>
-                <div class="progress">
-                  <div class="progress-bar progress-bar-danger" style="width: 30%;"></div>
-                </div>
-              </div>
-              <div class="col-md-5">
-                <div class="progress">
-                  <div class="progress-bar" style="width: 80%;"></div>
-                </div>
-                <div class="progress">
-                  <div class="progress-bar" style="width: 60%;"></div>
-                </div>
-                <div class="progress">
-                  <div class="progress-bar" style="width: 30%;"></div>
-                </div>
-                <div class="progress">
-                  <div class="progress-bar" style="width: 20%;"></div>
-                </div>
-                <div class="progress">
-                  <div class="progress-bar" style="width: 20%;"></div>
-                </div>
-                <p>Needs to improve hiring</p>
-              </div>
+          <% users_to_graph() %> <%# call a function in users_helper that sets a list of user_id's to show ratings graphs for on the homepage %>
+          <% @show_user_id.each do |user_id| %>                  
+            <div class="well well-sm">
+              <% user = User.find_by(id: user_id) %>  
+              <p><b><%= user.name + " | " + user.email %> </b></p>
+                <%= graph_data(user_id) %>
+                <%= bar_chart @good_attributes, :min => 0, :height => "200px"%>
             </div>
-          </div>
-          <div class="well well-sm">
-            <% user = User.find_by(id: "25") %>  
-            <p><%= user.name + " | " + user.email %> </p>
-            <div class="row">
-              <div class="col-md-5" align="right">
-                <p>Big picture thinker</p>
-                <p>Reliable</p>
-                <p>In early / stays late</p>
-                <p>Leads by example</p>
-                <p>Leadership</p>
-                <p>Technical skills</p>
-                <div class="progress">
-                  <div class="progress-bar progress-bar-danger" style="width: 30%;"></div>
-                </div>
-              </div>
-              <div class="col-md-5">
-                <div class="progress">
-                  <div class="progress-bar" style="width: 60%;"></div>
-                </div>
-                <div class="progress">
-                  <div class="progress-bar" style="width: 50%;"></div>
-                </div>
-                <div class="progress">
-                  <div class="progress-bar" style="width: 40%;"></div>
-                </div>
-                <div class="progress">
-                  <div class="progress-bar" style="width: 10%;"></div>
-                </div>
-                <div class="progress">
-                  <div class="progress-bar" style="width: 10%;"></div>
-                </div>
-                <p>Needs to complete work more quickly</p>
-              </div>
-            </div>
-          </div>
-          <div class="well well-sm">
-            <% user = User.find_by(id: "20") %>  
-            <p><%= user.name + " | " + user.email %> </p>
-            <div class="row">
-              <div class="col-md-5" align="right">
-                <p>Knows the market</p>
-                <p>Ambitious</p>
-                <p>Rainmaker</p>
-                <p>Team player</p>
-                <p>Dependable</p>
-                <div class="progress">
-                  <div class="progress-bar progress-bar-danger" style="width: 30%;"></div>
-                </div>
-              </div>
-              <div class="col-md-5">
-                <div class="progress">
-                  <div class="progress-bar" style="width: 60%;"></div>
-                </div>
-                <div class="progress">
-                  <div class="progress-bar" style="width: 50%;"></div>
-                </div>
-                <div class="progress">
-                  <div class="progress-bar" style="width: 40%;"></div>
-                </div>
-                <div class="progress">
-                  <div class="progress-bar" style="width: 10%;"></div>
-                </div>
-                <p>Needs to build better rapport</p>
-              </div>
-            </div>
-          </div>
+          <% end %>
+
+
+          
         </div>
       </div>
       <hr>
