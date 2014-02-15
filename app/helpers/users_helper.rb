@@ -11,40 +11,40 @@ module UsersHelper
 
 	def graph_data(target_user_id)
 	  print "in graph_data "
-	  good_attributes=Hash.new(0) # default value is zero
+
+	  # format data into an array of arrays for chartkick
+	  @good_attributes=Array.new
 	  @ratings = Rating.all
 	  @attributes=Attribute.all
 	  @ratings.each do |rating|
 	    if rating.user_id == target_user_id
 	      if @attributes.find_by(id: rating.attribute_id).good
-	      	print rating.attribute_id
-	        good_attributes[rating.attribute_id] = rating.current_rating
+	      	#print rating.attribute_id
+	      	this_attribute_name = @attributes.find_by(id: rating.attribute_id).attribute_name
+	      	puts "this_attribute_name"
+	      	puts this_attribute_name
+	        @good_attributes.push([this_attribute_name, rating.current_rating])
 	      end
 	    end
 	  end
-	  good_attributes = good_attributes.sort_by{|_key, value| value}.reverse
-	  print "sorted good_attributes: "
-	  print good_attributes
-	  good_attributes.each do 
+	  @good_attributes = @good_attributes.sort{ |a,b| b[1] <=> a[1] }
+	  print "sorted @good_attributes is #{@good_attributes}"
 
-
-
-	  # good_attributes=Array.new
+	  # do it as an array of hashes for Google Charts - never got it working
+	  # @good_attributes=Array.new
 	  # @ratings = Rating.all
 	  # @attributes=Attribute.all
 	  # @ratings.each do |rating|
 	  #   if rating.user_id == target_user_id
 	  #     if @attributes.find_by(id: rating.attribute_id).good
 	  #     	print rating.attribute_id
-	  #       good_attributes.push({rating.attribute_id => rating.current_rating})
+	  #       #good_attributes.push({rating.attribute_id => rating.current_rating})
+	  #       @good_attributes.push({:attribute_id => rating.attribute_id, :rating => rating.current_rating})
+
 	  #     end
 	  #   end
 	  # end
-	  # good_attributes = good_attributes.sort_by{ |hsh| hsh[:rating]}
-	  # print "sorted good_attributes: "
-	  # print good_attributes
-
-
+	  # @good_attributes = @good_attributes.sort_by{ |hsh| hsh[:rating]}.reverse # or sort_by(&:rating)
 
 
 	end

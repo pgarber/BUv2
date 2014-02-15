@@ -68,3 +68,5 @@ rake db:migrate
 rake db:crunch_ratings
 
 so, Users still has a ratings column, but it's not being used.  I'm just having trouble deleting it
+
+I can't figure out a way to debug the javascript for Google Charts.  So try chartkick which uses javascript, but only requires me to write in ruby.
