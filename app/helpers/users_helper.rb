@@ -12,44 +12,64 @@ module UsersHelper
 	def graph_data(target_user_id)
 	  print "in graph_data "
 
-	  # format data into an array of arrays for chartkick
-	  @good_attributes=Array.new
+	  # format data into an array of arrays for chartkick - get top 5 positive attributes and top 1 negative attribute
+	  @show_attributes=Array.new
 	  @ratings = Rating.all
 	  @attributes=Attribute.all
-	  count = 1
+	  users_good_ratings = Array.new
+	  users_bad_ratings = Array.new
 	  @ratings.each do |rating|
-
-	    if rating.user_id == target_user_id  #if the rating is for this user
-	      if @attributes.find_by(id: rating.attribute_id).good  # and if it's a good rating
-	      	if count <= 5 # only show 5 attributes.  but this needs to be more advanced so that I show the highest rated 5
-	      	  this_attribute_name = @attributes.find_by(id: rating.attribute_id).attribute_name
-	          @good_attributes.push([this_attribute_name, rating.current_rating])
-	          count+=1
-	        print " graph_data count: #{count} "
-	        end
-
+	  	if rating.user_id == target_user_id  #if the rating is for this user
+	      if @attributes.find_by(id: rating.attribute_id).good == "true"  # and if it's a good rating
+	      	users_good_ratings.push(rating)  
+	      else # rating is bad
+	      	users_bad_ratings.push(rating)
 	      end
 	    end
 	  end
-	  @good_attributes = @good_attributes.sort{ |a,b| b[1] <=> a[1] }
-	  print "sorted @good_attributes is #{@good_attributes}"
 
-	  # do it as an array of hashes for Google Charts - never got it working
+	  users_good_ratings.sort! { |a,b| b.current_rating <=> a.current_rating } # sort by current rating
+	  users_bad_ratings.sort! { |a,b| b.current_rating <=> a.current_rating } # sort by current rating
+
+	  count=1
+	  users_good_ratings.each do |rating|
+	  	if count <=5
+	  	  this_attribute_name = @attributes.find_by(id: rating.attribute_id).attribute_name
+	      @show_attributes.push([this_attribute_name, rating.current_rating])
+	      count+=1 
+	    end
+	  end
+
+	  count =1
+	  users_bad_ratings.each do |rating|  # now find the highest rated negative attrib and add to @show_attributes
+	  	if count <=1 # only 1 negative attribute
+	  	  this_attribute_name = @attributes.find_by(id: rating.attribute_id).attribute_name
+	      @show_attributes.push([this_attribute_name, -1 * rating.current_rating])
+	      count+=1 	
+	    end
+	  end
+
+	  #   original method, working, which only found + attributes
 	  # @good_attributes=Array.new
 	  # @ratings = Rating.all
 	  # @attributes=Attribute.all
+	  # users_ratings = Array.new
 	  # @ratings.each do |rating|
-	  #   if rating.user_id == target_user_id
-	  #     if @attributes.find_by(id: rating.attribute_id).good
-	  #     	print rating.attribute_id
-	  #       #good_attributes.push({rating.attribute_id => rating.current_rating})
-	  #       @good_attributes.push({:attribute_id => rating.attribute_id, :rating => rating.current_rating})
-
+	  # 	if rating.user_id == target_user_id  #if the rating is for this user
+	  #     if @attributes.find_by(id: rating.attribute_id).good == 'true'  # and if it's a good rating
+	  #     	users_ratings.push(rating)  
 	  #     end
 	  #   end
 	  # end
-	  # @good_attributes = @good_attributes.sort_by{ |hsh| hsh[:rating]}.reverse # or sort_by(&:rating)
-
+	  # users_ratings.sort! { |a,b| b.current_rating <=> a.current_rating } # sort by current rating
+	  # count=1
+	  # users_ratings.each do |rating|
+	  # 	if count <=5
+	  # 	  this_attribute_name = @attributes.find_by(id: rating.attribute_id).attribute_name
+	  #     @good_attributes.push([this_attribute_name, rating.current_rating])
+	  #     count+=1 	
+	  #   end
+	  # end
 
 	end
 
@@ -69,8 +89,4 @@ module UsersHelper
 		  	last_user_id = @ratings.pop.user_id
 		end
 	end
-
-
-
-
 end

@@ -54,8 +54,8 @@
             <div class="well well-sm">
               <% user = User.find_by(id: user_id) %>  
               <p><b><%= user.name + " | " + user.email %> </b></p>
-                <%= graph_data(user_id) %>
-                <%= bar_chart @good_attributes, :min => 0, :height => "200px"%>
+                <% graph_data(user_id) %>  <%# get the top 5 attributes for this user and set them in @good_attributes %>
+                <%= bar_chart @show_attributes, :height => "200px"%>
             </div>
           <% end %>
 

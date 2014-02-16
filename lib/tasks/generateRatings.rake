@@ -15,24 +15,29 @@ def make_ratings
   all_feedback = Feedback.all
   all_feedback.each do |vote|
 
-    if Rating.exists?(user_id: vote.to_id, attribute_id: vote.attribute_id)
+    if Rating.exists?(user_id: vote.to_id, attribute_id: vote.attribute_id) # if they've received this attribute before
       @rating = Rating.find_by(user_id: vote.to_id, attribute_id: vote.attribute_id)
         # @ratings = @ratings_user.where(attribute_id: vote.attribute_id)
-
-      if @rating.current_rating
+      puts "have received #{vote.attribute_id} before "
+      if @rating.current_rating  # todo: this is wierd - fix it.  
       else
         @rating.current_rating = 0
       end
       @rating.current_rating ||= 0
-      if vote.updated_at > @rating.updated_at  #feedback is newer than the rating
+      if vote.updated_at > @rating.updated_at  #feedback is newer than the rating #TODO: is < correct?
+        # todo: put more logic here - like less or no impact if same thing comes from same person.  
+        # or impact dissipating over time
+        # or log scale (try rating = 1 + log(unique votes, base ~1.8) )
+        puts "> "
         @rating.current_rating = @rating.current_rating + 1
         if @rating.save
-          print "saved"
+          print "saved "
         else
           print "saveFAILED"
         end
       end
     else  # this person never got this feedback before, so their score will be 1.
+      puts " never received #{vote.attribute_id} before "
       Rating.create(user_id: vote.to_id, attribute_id: vote.attribute_id, current_rating: 1)
     end
   end
