@@ -32,8 +32,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)    
     if @user.save
       sign_in @user
-      flash[:success] = "Welcome to the Sample App"
-      redirect_to @user   # redirects to user show page (which is what?)
+      flash[:success] = "Account created succesfully.  Welcome to BumptUp!"
+      redirect_to '#'   # @user   # redirects to user show page (users/show.html.erb)
     else
       render 'new'
     end

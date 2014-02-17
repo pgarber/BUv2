@@ -1,4 +1,5 @@
 
+
 <br>
 <div class="container">
   <div class="row">
@@ -21,42 +22,56 @@
             <p>0 means "no rating given"</p>
 
           </div>
-          <div class="col-md-5">
-          Results: <span id="resultsRange">0</span>
-          <input type="range" min="0" max="10" value="0" step="1" onchange="resultsValue(this.value)" />
-          Job Knowledge: <span id="jkRange">0</span>
-          <input type="range" min="0" max="10" value="0" step="1" onchange="jkValue(this.value)" />
-          Initiative: <span id="initiativeRange">0</span>
-          <input type="range" min="0" max="10" value="0" step="1" onchange="initiativeValue(this.value)" />          
-          Communication: <span id="commRange">0</span>
-          <input type="range" min="0" max="10" value="0" step="1" onchange="commValue(this.value)" />          
-          Leadership: <span id="leadershipRange">0</span>
-          <input type="range" min="0" max="10" value="0" step="1" onchange="leadershipValue(this.value)" />          
+            <div class="col-md-5">
+            Results: <span id="resultsRange">0</span>
+            <input type="range" min="0" max="10" value="0" step="1" onchange="resultsValue(this.value)" />
+            Job Knowledge: <span id="jkRange">0</span>
+            <input type="range" min="0" max="10" value="0" step="1" onchange="jkValue(this.value)" />
+            Initiative: <span id="initiativeRange">0</span>
+            <input type="range" min="0" max="10" value="0" step="1" onchange="initiativeValue(this.value)" />          
+            Communication: <span id="commRange">0</span>
+            <input type="range" min="0" max="10" value="0" step="1" onchange="commValue(this.value)" />          
+            Leadership: <span id="leadershipRange">0</span>
+            <input type="range" min="0" max="10" value="0" step="1" onchange="leadershipValue(this.value)" />          
 
-          <script type="text/javascript">
-          function resultsValue(newValue)
-          {
-            document.getElementById("resultsRange").innerHTML=newValue;
-          }
-          function jkValue(newValue)
-          {
-            document.getElementById("jkRange").innerHTML=newValue;
-          }
-          function initiativeValue(newValue)
-          {
-            document.getElementById("initiativeRange").innerHTML=newValue;
-          }
-          function commValue(newValue)
-          {
-            document.getElementById("commRange").innerHTML=newValue;
-          }
-          function leadershipValue(newValue)
-          {
-            document.getElementById("leadershipRange").innerHTML=newValue;
-          }
-          </script>
+            <script type="text/javascript">
+            function resultsValue(newValue)
+            {
+              document.getElementById("resultsRange").innerHTML=newValue;
+            }
+            function jkValue(newValue)
+            {
+              document.getElementById("jkRange").innerHTML=newValue;
+            }
+            function initiativeValue(newValue)
+            {
+              document.getElementById("initiativeRange").innerHTML=newValue;
+            }
+            function commValue(newValue)
+            {
+              document.getElementById("commRange").innerHTML=newValue;
+            }
+            function leadershipValue(newValue)
+            {
+              document.getElementById("leadershipRange").innerHTML=newValue;
+            }
+            </script>
 
-            
+            <%# eyecon bootstrap slider
+            <div class="well">Range:
+              <input type="text" class="span2" value="50" id="rangeSlider" data-slider-min="0" data-slider-max="10" data-slider-step="1" data-slider-value="0">
+            </div>
+            <script>
+              $('#rangeSlider').slider().on('slide', function (ev) {
+              sliderVal = ev.value;
+              });
+              if (sliderVal) {
+                $('#rangeSlider').slider('setValue', sliderVal)
+              }
+            </script>   %>
+
+
+
           </div>
         </div>
       </div>
@@ -69,27 +84,34 @@
 
           <%= form_tag("/feedbacks/complete/"+params[:id],  :method => "post", :remote => true) do %> <%# from codelearn.org %>
           
-          <% all_attributes.each do |attribute| %> 
-            <% if attribute.good == 'true' %>
-              <div class="col-md-6" >
-                <label>
-                  <%= check_box_tag  ("attribute_checkbox[]"),attribute.id %><%=  attribute.attribute_name %> 
-                </label> 
-              </div>  
-              <div class="col-md-6">
-                <label>
-                  <%= check_box_tag  ("attribute_checkbox[]"),attribute.opposite_id %><%=  all_attributes.find(attribute.opposite_id).attribute_name%>
-                </label>
-              </div>  
-            <% end %>  
+            <% all_attributes.each do |attribute| %> 
+              <% if attribute.good == 'true' %>  <%# put good ones in left column %>
+                <div class="col-md-6" >
+                  <label>
+                    <%= check_box_tag  ("attribute_checkbox[]"),attribute.id %><%=  attribute.attribute_name %> 
+                  </label> 
+                </div>  
+                <div class="col-md-6">
+                  <label>
+                    <%= check_box_tag  ("attribute_checkbox[]"),attribute.opposite_id %><%=  all_attributes.find(attribute.opposite_id).attribute_name%>
+                  </label>
+                </div>  
+              <% end %>  <%# end if good %>
 
-          <%end%>
+            <%end%>  <%# end each do %>
           
-          <%= submit_tag("Submit feedback", :class=>"btn btn-success") %>
-          <%end %>
+          <%= submit_tag("Submit attribute feedback", :class=>"btn btn-success") %>
+          <%end %>  <%# end form tag do %>
 
         
       </div> 
     </div>
   </div>
 </div>
+
+
+<%# eyecon bootstrap slider stuff %>  
+<script src="js/google-code-prettify/prettify.js"></script>
+<script src="js/modernizr.js"></script>
+<script src="js/jquery.js"></script>
+<script src="/vendor/assets/js/bootstrap-slider.js"></script>

@@ -8,7 +8,7 @@ by [Michael Hartl](http://michaelhartl.com/).
 views from divshot:
 homepage.html went into users/_homepage.html.erb
 myfeedback went into users/show.html.erb - now put it in users/myfeedback
-landing.html went into shared/_landing.html.erb
+landing.html went into shared/_landing.html.erb  -> now put in static_pages/_landing
 leaderboard.html went into users/leaderboard.html (should it be a partial?)
 give_feedback.html went into static_pages/give_feedback.html.erb -> now in show.html.erb
 
