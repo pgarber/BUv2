@@ -20,6 +20,7 @@ SampleApp::Application.routes.draw do
   match '/leaderboard', to: 'static_pages#leaderboard', via: 'get'  
   match '/give_feedback', to: 'feedbacks#give_feedback', via: 'get'
   match 'feedbacks/complete/:id', to: 'feedbacks#complete', via: 'post' 
+  match 'feedbacks/slider_complete/:id', to: 'feedbacks#slider_complete', via: 'post' 
   match '/myfeedback', to: 'users#myfeedback',  via: 'get'
 
 

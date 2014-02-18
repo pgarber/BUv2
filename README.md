@@ -70,3 +70,17 @@ rake db:crunch_ratings
 so, Users still has a ratings column, but it's not being used.  I'm just having trouble deleting it
 
 I can't figure out a way to debug the javascript for Google Charts.  So try chartkick which uses javascript, but only requires me to write in ruby.
+
+
+2/17/14.  Add slider bar functionality.  Need 1to10 ratings in models & controllers
+$ rails g migration add_rating_given_to_feedbacks rating_given:float
+$ rake db:migrate
+put 1to10 ratings in seeds
+$ rake db:seed // put the attributes in again - delete them first
+$ rails console
+XX> attrib = Attribute.all
+XX> attrib.delete_all  // this doesnt' reset id to 1 when you reseed.  Do following instead
+> ActiveRecord::Base.connection.execute("DELETE from sqlite_sequence where name = 'attributes'")
+$ rake db:seed
+
+changed to Simplex theme by Bootswatch by replacing custom.css.scss contents with that of bootstrap.css from bootswatch.com Simplex theme

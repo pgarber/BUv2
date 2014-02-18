@@ -78,8 +78,13 @@ attribute_list = [
   [ "Ambitious", 'true', 62 ],
   [ "Needs to show more ambition", 'false', 61 ],
   [ "Goes above and beyond", 'true', 64 ],
-  [ "Needs to do more than is asked", 'false', 63 ]
+  [ "Needs to do more than is asked", 'false', 63 ],
 
+  [ "Results", '1to10', 999],
+  [ "Job Knowledge", '1to10', 999],
+  [ "Initiative", '1to10', 999],
+  [ "Communication", '1to10', 999],
+  [ "Leadership", '1to10', 999]
 
 
 ]

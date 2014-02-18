@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140213162426) do
+ActiveRecord::Schema.define(version: 20140217162426) do
 
   create_table "attributes", force: true do |t|
     t.string   "attribute_name"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20140213162426) do
     t.integer  "attribute_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "rating_given"
   end
 
   create_table "microposts", force: true do |t|

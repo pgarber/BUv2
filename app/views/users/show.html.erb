@@ -20,11 +20,47 @@
             <p>1 is Worst</p>
             <p></p>
             <p>0 means "no rating given"</p>
-
           </div>
-            <div class="col-md-5">
+          <div class="col-md-5">
+
+
+
+
+         <%#= form_for("/feedbacks/slider_complete/"+params[:id],  :method => "post", :remote => true) do |f| %>
+<!-- 
+         <%# @feedback = Feedback.new      # ??? %>
+         <%#= form_for(@feedback) do |f| %>
+            
+          <div class="span2">
+          <%#= f.input :rating_given,
+              input_html: { 
+                class: "span2 slider", 
+                :"data-slider-value" => f.object.rating_given
+              } %>
+          </div>
+
+        <script>
+          $(function() {
+              $('input.slider').slider( {
+                step: 1,
+                max: 10,
+                value: 0
+              });
+            });
+        </script>
+
+        <div class="form-actions">
+          <%#= f.button :submit, "Log it!",
+              class: "btn-large btn-block  btn-primary" %>
+        </div>
+
+        <%# end %> -->
+
+
+            <%= form_tag("/feedbacks/slider_complete/"+params[:id],  :method => "post", :remote => true) do %> 
+
             Results: <span id="resultsRange">0</span>
-            <input type="range" min="0" max="10" value="0" step="1" onchange="resultsValue(this.value)" />
+            <input id="attribute_checkbox_" name="attribute_checkbox[]" type="range" min="0" max="10" value="0" step="1" onchange="resultsValue(this.value)" />
             Job Knowledge: <span id="jkRange">0</span>
             <input type="range" min="0" max="10" value="0" step="1" onchange="jkValue(this.value)" />
             Initiative: <span id="initiativeRange">0</span>
@@ -35,27 +71,77 @@
             <input type="range" min="0" max="10" value="0" step="1" onchange="leadershipValue(this.value)" />          
 
             <script type="text/javascript">
-            function resultsValue(newValue)
-            {
-              document.getElementById("resultsRange").innerHTML=newValue;
-            }
-            function jkValue(newValue)
-            {
-              document.getElementById("jkRange").innerHTML=newValue;
-            }
-            function initiativeValue(newValue)
-            {
-              document.getElementById("initiativeRange").innerHTML=newValue;
-            }
-            function commValue(newValue)
-            {
-              document.getElementById("commRange").innerHTML=newValue;
-            }
-            function leadershipValue(newValue)
-            {
-              document.getElementById("leadershipRange").innerHTML=newValue;
-            }
+
+              $('#btn').live('Submit rating feedback',function(){
+                    alert($('attribute_checkbox_').val());
+                    :rating_given => ('attribute_checkbox_').val());
+              });
+
+              function resultsValue(newValue)
+              {
+                document.getElementById("resultsRange").innerHTML=newValue;
+              }
+              function jkValue(newValue)
+              {
+                document.getElementById("jkRange").innerHTML=newValue;
+              }
+              function initiativeValue(newValue)
+              {
+                document.getElementById("initiativeRange").innerHTML=newValue;
+              }
+              function commValue(newValue)
+              {
+                document.getElementById("commRange").innerHTML=newValue;
+              }
+              function leadershipValue(newValue)
+              {
+                document.getElementById("leadershipRange").innerHTML=newValue;
+              }
             </script>
+
+            
+            <% @param = capture do %>
+            <%= javascript_tag "document.write(getParameter());" %>
+            <%= puts "@param is #{@param}" %>
+            <% end %>
+            
+
+            <%= submit_tag("Submit rating feedback", :class=>"btn btn-success", :onclick => "return validateform(#{@variable});") %>
+          <%end%>  <%# end form tag do %>
+
+            <%# redo sliders using the method that I have for attributes %>
+
+
+
+            <% all_attributes = Attribute.all %>
+            
+          
+
+
+
+
+
+
+
+
+
+            <%#= form_tag("/feedbacks/slider_complete/"+params[:id],  :method => "post", :remote => true) do %> 
+          
+            <%# all_attributes.each do |attribute| %> 
+              <%# if attribute.good == '1to10' %>  <%# just 1to10 types %>
+                <label>
+                  <%#= range_field_tag  ("attribute_checkbox[]"),attribute.id, in: 0...10, step: 1 %>
+                  <%#=  attribute.attribute_name %> 
+                </label> 
+                
+              <%# end %>  <%# end if 1to10 %>
+
+            <%#end%>  <%# end each do %>
+          
+          <%#= submit_tag("Submit rating feedback", :class=>"btn btn-success") %>
+          <%#end%>  <%# end form tag do %>
+
+
 
             <%# eyecon bootstrap slider
             <div class="well">Range:
@@ -69,9 +155,6 @@
                 $('#rangeSlider').slider('setValue', sliderVal)
               }
             </script>   %>
-
-
-
           </div>
         </div>
       </div>
@@ -79,8 +162,6 @@
         <p></p>
 
         <h4>Select attributes that apply to <%= @user.name %> </h4>Select as many or as few as you wish to describe <%= @user.name%>'s job performance
-
-          <% all_attributes = Attribute.all %>
 
           <%= form_tag("/feedbacks/complete/"+params[:id],  :method => "post", :remote => true) do %> <%# from codelearn.org %>
           
@@ -93,7 +174,8 @@
                 </div>  
                 <div class="col-md-6">
                   <label>
-                    <%= check_box_tag  ("attribute_checkbox[]"),attribute.opposite_id %><%=  all_attributes.find(attribute.opposite_id).attribute_name%>
+                    <%= check_box_tag  ("attribute_checkbox[]"),attribute.opposite_id %>
+                    <%= all_attributes.find(attribute.opposite_id).attribute_name%>
                   </label>
                 </div>  
               <% end %>  <%# end if good %>
