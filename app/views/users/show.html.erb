@@ -23,23 +23,23 @@
 
             <%= form_tag("/feedbacks/slider_complete/"+params[:id],  :method => "post", :remote => true) do %> 
 
-              Results: <span id="resultsRange">No Rating</span>
+              <b>Results:</b> <span id="resultsRange">No Rating</span>
               <input type="range" min="0" max="10" value="0" step="1" onchange="resultsValue(this.value)" name="resultsScore" />  
               <br>
 
-              Job Knowledge: <span id="jkRange">No Rating</span>
+              <b>Job Knowledge:</b> <span id="jkRange">No Rating</span>
               <input type="range" min="0" max="10" value="0" step="1" onchange="jkValue(this.value)" name="jkScore" />  
               <br>
 
-              Initiative: <span id="initiativeRange">No Rating</span>
+              <b>Initiative:</b> <span id="initiativeRange">No Rating</span>
               <input type="range" min="0" max="10" value="0" step="1" onchange="initiativeValue(this.value)" name="initiativeScore" />  
               <br>
 
-              Communication: <span id="commRange">No Rating</span>
+              <b>Communication:</b> <span id="commRange">No Rating</span>
               <input type="range" min="0" max="10" value="0" step="1" onchange="commValue(this.value)" name="commScore" />          
               <br>
 
-              Leadership: <span id="leadershipRange">No Rating</span>
+              <b>Leadership:</b> <span id="leadershipRange">No Rating</span>
               <input type="range" min="0" max="10" value="0" step="1" onchange="leadershipValue(this.value)" name="leadershipScore" /> 
               <p></p>
 
