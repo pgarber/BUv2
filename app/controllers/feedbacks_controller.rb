@@ -16,10 +16,6 @@ class FeedbacksController < ApplicationController
 
   def complete
 
-    puts ":id is "
-    puts :id
-    puts "params[:id] is "
-    puts params[:id]
     @attribute=Attribute.all
     @user = User.find(params[:id])
     params[:attribute_checkbox].each do |check|
@@ -38,20 +34,34 @@ class FeedbacksController < ApplicationController
 
   def slider_complete
 
-    puts ":id is "
-    puts :id
-    puts "params[:id] is "
-    puts params[:id]
+    puts "params[:id]: #{params[:id]}"
+    puts "params: #{params}"
+    puts "comScore: #{params[:comScore]}"
+
     @attribute=Attribute.all
     @user = User.find(params[:id])
-    params[:attribute_checkbox].each do |check|
+    params[:comScore]
+    if params[:resultsScore].to_i > 0
+      Feedback.create(from_id: current_user.id, to_id: @user.id, 
+                       attribute_id: 65, rating_given: params[:resultsScore]);
+    end
+    if params[:jkScore].to_i > 0
+      Feedback.create(from_id: current_user.id, to_id: @user.id, 
+                       attribute_id: 66, rating_given: params[:jkScore]);
+    end
+    if params[:initiativeScore].to_i > 0
+      Feedback.create(from_id: current_user.id, to_id: @user.id, 
+                       attribute_id: 67, rating_given: params[:initiativeScore]);
+    end
+    if params[:commScore].to_i > 0
+      Feedback.create(from_id: current_user.id, to_id: @user.id, 
+                       attribute_id: 68, rating_given: params[:commScore]);
+    end
+    if params[:leadershipScore].to_i > 0
+      Feedback.create(from_id: current_user.id, to_id: @user.id, 
+                       attribute_id: 69, rating_given: params[:leadershipScore]);
+    end
 
-       attribute_id = check
-          #t = Feedback.find_by_id(attribute_id) # don't need this since I'm always creating new
-          Feedback.create(from_id: current_user.id, to_id: @user.id, 
-                      attribute_id: attribute_id, rating_given: rating_given);
-       
-     end
     flash[:success] = "Feedback saved.  Feedback will show up after midnight EST tonight"
     redirect_to root_url  # TODO - don't go home.  stay on the page.  use ajax?
   end
