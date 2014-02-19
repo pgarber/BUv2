@@ -20,7 +20,7 @@ module UsersHelper
 	  users_bad_ratings = Array.new
 	  @ratings.each do |rating|
 	  	if rating.user_id == target_user_id  #if the rating is for this user
-	      if @attributes.find_by(id: rating.attribute_id).good == "true"  # and if it's a good rating
+	      if @attributes.find_by(identifier: rating.attribute_identifier).good == "true"  # and if it's a good rating
 	      	users_good_ratings.push(rating)  
 	      else # rating is bad
 	      	users_bad_ratings.push(rating)
@@ -34,7 +34,7 @@ module UsersHelper
 	  count=1
 	  users_good_ratings.each do |rating|
 	  	if count <=5
-	  	  this_attribute_name = @attributes.find_by(id: rating.attribute_id).attribute_name
+	  	  this_attribute_name = @attributes.find_by(identifier: rating.attribute_identifier).attribute_name
 	      @show_attributes.push([this_attribute_name, rating.current_rating])
 	      count+=1 
 	    end
@@ -43,7 +43,7 @@ module UsersHelper
 	  count =1
 	  users_bad_ratings.each do |rating|  # now find the highest rated negative attrib and add to @show_attributes
 	  	if count <=1 # only 1 negative attribute
-	  	  this_attribute_name = @attributes.find_by(id: rating.attribute_id).attribute_name
+	  	  this_attribute_name = @attributes.find_by(identifier: rating.attribute_identifier).attribute_name
 	      @show_attributes.push([this_attribute_name, -1 * rating.current_rating])
 	      count+=1 	
 	    end

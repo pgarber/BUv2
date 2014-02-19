@@ -1,0 +1,178 @@
+          <%= form_for(all_attributes) do |f| %>  <%# not all_attributes %>
+            <div class="field">
+              <%= f.range_field :w1, :min=>0, :max=>10, :class=>"slide", :id=>"slider1" %>
+            </div>
+            <%= f.submit "Post", class: "btn btn-large btn-primary" %>
+          <% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+snippet from SE
+
+<style type="text/css">
+  div.slider { width:256px; margin:10px 0; background-color:#b3b3b3; height:10px; position: relative; }
+  div.slider div.handle { width:10px; height:15px; background-color:#474747; cursor:move; position: absolute; }
+</style>
+
+<p id="notice"><%= notice %></p>
+
+<h1>
+  <%= @subject.name %>
+</h1>
+
+<p>
+  <%= @subject.description %>
+</p>
+
+<table>
+  <tr>
+    <th>Traits</th>
+  </tr>
+
+  <% @subject.traits.each do |trait| %>
+    <tr>
+      <td><%= link_to trait.name, trait %></td>&nbsp; &nbsp; &nbsp;
+      <td><%= link_to 'Edit', edit_trait_path(trait) %></td>&nbsp;
+      <td><%= link_to 'Destroy', trait, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+    <tr>
+        <td>
+          #Slider value is sent here onChange. This value needs to be passed to rating#create
+          <input id="trait.id", name="rating[value]", value="50" />
+
+          <div id="s<%= trait.id %>" class="slider">
+            <div class="handle"></div>
+          </div>
+
+          <script type="text/javascript">
+            (function() {
+              var trait_slider = $('s<%= h trait.id %>')
+
+              new Control.Slider(trait_slider.down('.handle'), trait_slider, {
+                range: $R(0, 100),
+                sliderValue: 50,
+                onChange: function(v) { $('<%= h trait.id %>').value = v }
+              });
+            })();
+          </script>
+        </td>
+        <td>
+          #How the hell do I save each slider value??? is this the best way of doing it?
+          <%= link_to "save", :controller => "ratings", :action => "create" %>
+        </td>
+    </tr>
+<% end %>
+</table>
+
+<br /><br /><%= render 'traits/form' %>
+
+<%= link_to 'Edit', edit_subject_path(@subject) %> |
+<%= link_to 'Back', subjects_path %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+Snipped from https://github.com/sguha00/spoutlets/blob/341781ac8ea3266a1e67fe9815e1c780be6cddad/app/views/entries/_form.html.erb
+<%= simple_form_for(@entry) do |f| %>
+<%= f.error_notification %>
+<div class="row">
+  <div class="span7">
+    <%= f.input :title, wrapper: :prepend, label: false do %>
+      <%= content_tag :span, "Title", class: "add-on" %>
+      <%= f.input_field :title, class: "span6" %>
+    <% end %>
+  </div>
+  <div class="span4 offset1">
+    <%= f.input :published,
+        as: :boolean,
+        label: "Share on SpoutWall" %>
+  </div>
+</div>
+<div class="row">
+  <div class="span7">
+    <%= f.input :content,
+        as: :text,
+        label: false,
+        placeholder: "Give more details about what you're dealing with",
+        input_html: { rows: 7, class: "span7" } %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span7">
+    <div class="well">
+      <div class="row">
+        <div class="span2">
+          <%= f.input :happiness_level,
+              input_html: { 
+                class: "span2 slider", 
+                :"data-slider-value" => f.object.happiness_level
+              } %>
+        </div>
+        <div class="span2">
+          <%= f.input :anxiety_level,
+              input_html: { 
+                class: "span2 slider",
+                :"data-slider-value" => f.object.anxiety_level 
+              } %>
+        </div>
+        <div class="span2">
+          <%= f.input :irritation_level,
+              input_html: { 
+                class: "span2 slider",
+                :"data-slider-value" => f.object.irritation_level  
+              } %>
+        </div>
+        <script>
+          $(function() {
+              $('input.slider').slider( {
+                step: 1,
+                max: 5,
+                value: 0
+              });
+            });
+        </script>
+      </div>
+      <div class="row">
+        <div class="span7">
+          <%= f.input :category,
+              collection: [
+                ["other"],
+                ["just feeling off"],
+                ["alcohol/drugs"],
+                ["body/health"],
+                ["dreams/sleep"],
+                ["family/friends"],
+                ["sex/relationships"],
+                ["work/school"],
+              ],
+              label: "Categorize your entry to understand what bothers or delights you regularly" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="form-actions">
+  <%= f.button :submit, "Log it!",
+      class: "btn-large btn-block  btn-primary" %>
+</div>
+
+<% end %>

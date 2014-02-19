@@ -11,20 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140217162426) do
+ActiveRecord::Schema.define(version: 20140219155913) do
 
   create_table "attributes", force: true do |t|
     t.string   "attribute_name"
     t.binary   "good"
-    t.integer  "opposite_id"
+    t.integer  "opposite_identifier"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "identifier"
   end
+
+  add_index "attributes", ["identifier"], name: "index_attributes_on_identifier", unique: true
 
   create_table "feedbacks", force: true do |t|
     t.integer  "from_id"
     t.integer  "to_id"
-    t.integer  "attribute_id"
+    t.integer  "attribute_identifier"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.float    "rating_given"
@@ -41,7 +44,7 @@ ActiveRecord::Schema.define(version: 20140217162426) do
 
   create_table "ratings", force: true do |t|
     t.integer  "user_id"
-    t.integer  "attribute_id"
+    t.integer  "attribute_identifier"
     t.float    "current_rating"
     t.datetime "created_at"
     t.datetime "updated_at"

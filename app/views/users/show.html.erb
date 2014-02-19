@@ -96,13 +96,13 @@
               <% if attribute.good == 'true' %>  <%# put good ones in left column %>
                 <div class="col-md-6" >
                   <label>
-                    <%= check_box_tag  ("attribute_checkbox[]"),attribute.id %><%=  attribute.attribute_name %> 
+                    <%= check_box_tag  ("attribute_checkbox[]"),attribute.opposite_identifier %><%=  attribute.attribute_name %> 
                   </label> 
                 </div>  
                 <div class="col-md-6">
                   <label>
-                    <%= check_box_tag  ("attribute_checkbox[]"),attribute.opposite_id %>
-                    <%= all_attributes.find(attribute.opposite_id).attribute_name%>
+                    <%= check_box_tag  ("attribute_checkbox[]"),attribute.opposite_identifier %>
+                    <%= all_attributes.find(attribute.opposite_identifier).attribute_name%>
                   </label>
                 </div>  
               <% end %>  <%# end if good %>

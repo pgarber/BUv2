@@ -84,3 +84,7 @@ XX> attrib.delete_all  // this doesnt' reset id to 1 when you reseed.  Do follow
 $ rake db:seed
 
 changed to Simplex theme by Bootswatch by replacing custom.css.scss contents with that of bootstrap.css from bootswatch.com Simplex theme
+
+Got sliders working, merged back to main.  John is helping with unit tests
+
+$ rails g migration AddAttributeIdentifier   # then put 4 lines in new migrations file
