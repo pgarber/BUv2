@@ -1,4 +1,5 @@
 SampleApp::Application.routes.draw do
+  get "company_employees/new"
   get "companies/new"
   # get "users/new"  #remove per Listing 7.3
   resources :users do

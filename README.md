@@ -103,3 +103,9 @@ $ git checkout -b companies
 $ rails g controller Companies new --no-test-framework
 $ rails g model Company domain:string name:string
 
+$ rails g controller Company_employees new --no-test-framework
+$ rails g model Company_employee company_id:integer user_id:integer user_in_group:hash
+ # I should either do CompanyEmployee or company_employee.  Not Company_employee
+destroy these (destroy controller, destroy model, g migration to drop_table) and do
+$ rails g controller CompanyEmployees new --no-test-framework
+$ rails g model CompanyEmployee company_id:integer user_id:integer

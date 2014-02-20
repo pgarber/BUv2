@@ -70,7 +70,7 @@
               <% user = User.find_by(id: user_id) %>  
               <p><b><%= user.name + " | " + user.email %> </b></p>
                 <% graph_data(user_id) %>  <%# get the top 5 attributes for this user and set them in @good_attributes %>
-                <%= bar_chart @show_attributes, :height => "200px"%>
+                <%= bar_chart @show_attributes, :height => "200px"%> <%# call chartkick %>
             </div>
           <% end %>
 

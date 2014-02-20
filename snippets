@@ -1,3 +1,24 @@
+company_employees_controller  def new
+    puts "in company_employee new"
+    @company_employee = Company_employee.new
+  end
+
+  def create
+    puts "in company_employee create"
+    @company_employee = Company_employee.new(params[:company_employee]) ##? what should be in ()
+    if @company_employee.save
+      notice: 'company_employee created'  
+      puts 'company_employee saved'
+    else
+      notice: 'company_employee save error' 
+      puts "company_employee save error"
+  end
+
+end
+
+
+
+
           <%= form_for(all_attributes) do |f| %>  <%# not all_attributes %>
             <div class="field">
               <%= f.range_field :w1, :min=>0, :max=>10, :class=>"slide", :id=>"slider1" %>
