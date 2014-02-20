@@ -1,20 +1,21 @@
 class FeedbacksController < ApplicationController
   before_action :signed_in_user
 
-  def create #make this work for feedbacks - it came from relationships controller 
-    @user = User.find(params[:relationship][:followed_id])
-    current_user.follow!(@user)
-    respond_to do |format|
-      format.html { redirect_to @user }
-      format.js
-    end
-  end
+  # def create #make this work for feedbacks - it came from relationships controller 
+  #   @user = User.find(params[:relationship][:followed_id])
+  #   current_user.follow!(@user)
+  #   respond_to do |format|
+  #     format.html { redirect_to @user }
+  #     format.js
+  #   endΩ
+  # end
 
   def new
   	@relationship = Relationship.new
   end
 
   def complete
+    puts "in complete"
 
     @attribute=Attribute.all
     @user = User.find(params[:id])
@@ -33,7 +34,7 @@ class FeedbacksController < ApplicationController
   end
 
   def slider_complete
-
+    puts "in slider_complete"
     #puts "params[:id]: #{params[:id]}"
     #puts "params: #{params}"
     #puts "comScore: #{params[:comScore]}"

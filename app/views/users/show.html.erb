@@ -87,8 +87,7 @@
       </div>
       <div class="well well-sm">
         <p></p>
-
-        <h4>Select attributes that apply to <%= @user.name %> </h4>Select as many or as few as you wish to describe <%= @user.name%>'s job performance
+        <h4>Select attributes that apply to <%= @user.name %> </h4>Select as many or as few as you wish to describe  #{@user.name}'s job performance
 
           <%= form_tag("/feedbacks/complete/"+params[:id],  :method => "post", :remote => true) do %> <%# from codelearn.org %>
           
@@ -96,13 +95,13 @@
               <% if attribute.good == 'true' %>  <%# put good ones in left column %>
                 <div class="col-md-6" >
                   <label>
-                    <%= check_box_tag  ("attribute_checkbox[]"),attribute.opposite_identifier %><%=  attribute.attribute_name %> 
+                    <%= check_box_tag  ("attribute_checkbox[]"),attribute.identifier %><%=  attribute.attribute_name %> 
                   </label> 
                 </div>  
                 <div class="col-md-6">
                   <label>
                     <%= check_box_tag  ("attribute_checkbox[]"),attribute.opposite_identifier %>
-                    <%= all_attributes.find(attribute.opposite_identifier).attribute_name%>
+                    <%= all_attributes.find_by(identifier: attribute.opposite_identifier).attribute_name %>
                   </label>
                 </div>  
               <% end %>  <%# end if good %>

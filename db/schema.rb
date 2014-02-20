@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140219155913) do
+ActiveRecord::Schema.define(version: 20140219190132) do
 
   create_table "attributes", force: true do |t|
     t.string   "attribute_name"
@@ -23,6 +23,13 @@ ActiveRecord::Schema.define(version: 20140219155913) do
   end
 
   add_index "attributes", ["identifier"], name: "index_attributes_on_identifier", unique: true
+
+  create_table "companies", force: true do |t|
+    t.string   "domain"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "feedbacks", force: true do |t|
     t.integer  "from_id"

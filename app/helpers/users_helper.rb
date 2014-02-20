@@ -19,10 +19,13 @@ module UsersHelper
 	  users_good_ratings = Array.new
 	  users_bad_ratings = Array.new
 	  @ratings.each do |rating|
+	  	# TODO: I could use some error checking here because if bad data gets into ratings, can't render home page
+	  	# example: if there is a row in the ratings table with an attribute_identifier that's no longer in the 
+	  	# attributes table
 	  	if rating.user_id == target_user_id  #if the rating is for this user
 	      if @attributes.find_by(identifier: rating.attribute_identifier).good == "true"  # and if it's a good rating
 	      	users_good_ratings.push(rating)  
-	      else # rating is bad
+	      elsif @attributes.find_by(identifier: rating.attribute_identifier).good == "false" # rating is bad
 	      	users_bad_ratings.push(rating)
 	      end
 	    end

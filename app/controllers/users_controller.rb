@@ -28,11 +28,23 @@ class UsersController < ApplicationController
   	@user = User.new
   end
   
-  def create
-    @user = User.new(user_params)    
+  def create  # where is this called from?
+    @user = User.new(user_params)   
+    @companies = Company.all
+    print "user_params: #{user_params}"
+    domain = @user.email.split("@").last
+    name = domain.split(".com").first.capitalize
+    print "domain: #{domain}"
+    if @companies.find_by(domain: domain)
+      print " this company already exists in BumptUp "
+    else 
+      print " first user in this company "
+      Company.create(domain: domain, name: name)  
+    end
+
     if @user.save
       sign_in @user
-      flash[:success] = "Account created succesfully.  Welcome to BumptUp!"
+      flash[:success] = "Account created succesfully!  Welcome to #{name}'s BumptUp network."
       redirect_to '#'   # @user   # redirects to user show page (users/show.html.erb)
     else
       render 'new'

@@ -78,8 +78,11 @@ $ rake db:migrate
 put 1to10 ratings in seeds
 $ rake db:seed // put the attributes in again - delete them first
 $ rails console
-XX> attrib = Attribute.all
-XX> attrib.delete_all  // this doesnt' reset id to 1 when you reseed.  Do following instead
+
+# This method works now that I'm working off of identifier rather than id
+> attrib = Attribute.all
+> attrib.delete_all  // this doesnt' reset id to 1 when you reseed.  Do following instead
+
 > ActiveRecord::Base.connection.execute("DELETE from sqlite_sequence where name = 'attributes'")
 $ rake db:seed
 
@@ -88,3 +91,15 @@ changed to Simplex theme by Bootswatch by replacing custom.css.scss contents wit
 Got sliders working, merged back to main.  John is helping with unit tests
 
 $ rails g migration AddAttributeIdentifier   # then put 4 lines in new migrations file
+$ rake db:migrate
+$ rails g migration ChangeOppositeidName # had to do another migration because I already ran the previous migration
+$ rake db:migrate
+# update seeds.rb
+$ rake db:seed
+
+
+Now, add Companies  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+$ git checkout -b companies
+$ rails g controller Companies new --no-test-framework
+$ rails g model Company domain:string name:string
+
