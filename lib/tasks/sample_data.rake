@@ -4,20 +4,21 @@ namespace :db do
     make_users
     make_microposts
     make_relationships
+    make_company_employees
   end
 end
 
 def make_users
   admin = User.create!(name: "Example User",
-                 email: "example@railstutorial.org",
+                 email: "example@example.com",
                  password: "foobar",
                  password_confirmation: "foobar",
                  admin: true)
   99.times do |n|
     name  = Faker::Name.name
-    email = "example-#{n+1}@railstutorial.org"
+    email = "example-#{n+1}@example.com"
     password  = "password"
-    User.create!(name: name,
+    User.create!(name: name,   
                  email: email,
                  password: password,
                  password_confirmation: password)
@@ -39,4 +40,20 @@ def make_relationships
   followers      = users[3..40]
   followed_users.each { |followed| user.follow!(followed) }
   followers.each      { |follower| follower.follow!(user) }
+
+
+end
+
+#TODO: put in sample_data for feedbacks also
+
+#not sure why I need to do this because I think make_users should call User.create, but it seems not to.
+def make_company_employees  # need your company (example.com) to already exist in  Company table
+  users = User.all 
+  companies=Company.all
+  users.each do |user|
+    domain = user.email.split("@").last
+    company_id = companies.find_by(domain: domain).id
+    CompanyEmployee.create!(company_id:(companies.find_by(domain: domain).id), user_id: user.id)
+  end
+
 end
