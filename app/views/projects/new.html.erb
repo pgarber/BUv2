@@ -1,0 +1,22 @@
+<% provide(:title, 'Create new company project/strategy/effort') %>
+<h1>Create new company Project / Strategy / Effort</h1>
+<h4>Giving feedback on company projects and strategies helps company management make decisions with knowledge of what you and your colleagues think. </h4>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@project) do |f| %>
+      <%#= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label "Project name"%>
+      <%= f.text_field :name %>
+      Use the official project name.  Do not editorialize or feedback will be biased.
+      <%= f.hidden_field :domain_id, :value => CompanyEmployee.find_by(user_id: (current_user.id)).company_id %>
+      <%= current_user.id %> <br>
+      <%= CompanyEmployee.find_by(user_id: (current_user.id)) %><br>
+      <%= CompanyEmployee.find_by(user_id: (current_user.id)).company_id %><br>
+      <%= {:domain_id => CompanyEmployee.find_by(user_id: (current_user.id)).company_id} %>
+      <%= @project["domain_id"] = CompanyEmployee.find_by(user_id: (current_user.id)).company_id %>
+      <%= f.submit "Create the project", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

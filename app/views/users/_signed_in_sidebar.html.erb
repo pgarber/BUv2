@@ -9,10 +9,15 @@
           <p>+1 Above and beyond</p>
         </div>
         <div class="well well-sm">
-          <p>Search Projects or Coworkers</p>
+          <p>Search Projects or Colleague</p>
           <input type="text" class="form-control">
           <p></p>
           <a class="btn btn-primary btn-sm">Search</a>
+          <br><p></p>
+          <p><%= link_to "Create a colleague not in BumptUp yet", '#' %> <%#createuser_path(current_user) %></p>
+          
+          <p><%= link_to "Create a project / strategy / effort not in BumptUp yet", newproject_path %></p>
+
         </div>
         <div class="well well-sm">
         <%= link_to "Company Leaderboard", '/leaderboard' %> 

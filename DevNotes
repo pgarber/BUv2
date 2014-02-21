@@ -111,3 +111,14 @@ rake db:seed      // puts my attributes list in the db
 
 > # delete_all of users and company_employees
 $ rake db:populate
+$ rake db:seed # for attributes
+
+Now, on to the next table: Project
+$ rails g controller Project new --no-test-framework   # should have been Projects here - with an "s"!
+$ rails g model Project name:string domain_id:integer 
+
+
+todo: 
+fix homepage so that it doesn't error when ratings aren't right
+crunch_ratings comes up with 1 - is that because the feedback only came from 1 other user? When  I gave more ratings from the same person after a rake, the new ratings went in.  I think that crunch_ratings
+ignores multiple feedbacks of the same type on the same day / crunch_ratings

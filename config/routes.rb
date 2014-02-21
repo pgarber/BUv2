@@ -1,6 +1,6 @@
 SampleApp::Application.routes.draw do
-  get "project/new"
-  get "company_employees/new"
+#  get "project/new"  # todo: remove these like Listing 7.3?  to be RESTful
+  get "company_employees/new"  # will removing this make db:populate also create company_employees without the extra function?
   get "companies/new"
   # get "users/new"  #remove per Listing 7.3
   resources :users do
@@ -11,6 +11,7 @@ SampleApp::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :microposts, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
+  resources :projects, only: [:create, :destroy] # todo: do I need resources for my other models also?
 
   # root 'static_pages#home'
   root 'users#home'
@@ -25,6 +26,7 @@ SampleApp::Application.routes.draw do
   match 'feedbacks/complete/:id', to: 'feedbacks#complete', via: 'post' 
   match 'feedbacks/slider_complete/:id', to: 'feedbacks#slider_complete', via: 'post' 
   match '/myfeedback', to: 'users#myfeedback',  via: 'get'
+  match '/newproject', to: 'projects#new',      via: 'get'
 
 
   #get "static_pages/home"  
