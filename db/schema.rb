@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140221171250) do
+ActiveRecord::Schema.define(version: 20140222174740) do
 
   create_table "attributes", force: true do |t|
     t.string   "attribute_name"
@@ -64,6 +64,18 @@ ActiveRecord::Schema.define(version: 20140221171250) do
     t.datetime "updated_at"
   end
 
+  add_index "project_attributes", ["identifier"], name: "index_project_attributes_on_identifier", unique: true
+
+  create_table "project_feedbacks", force: true do |t|
+    t.integer  "from_id"
+    t.integer  "to_project_id"
+    t.string   "project_attribute_identifier"
+    t.string   "integer"
+    t.integer  "rating_given"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "projects", force: true do |t|
     t.string   "name"
     t.integer  "domain_id"
@@ -89,5 +101,30 @@ ActiveRecord::Schema.define(version: 20140221171250) do
   add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id"
   add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
   add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id"
+
+    create_table "users", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "password_digest"
+    t.string   "remember_token"
+    t.boolean  "admin",           default: false
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+
+  create_table "users", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "password_digest"
+    t.string   "remember_token"
+    t.boolean  "admin",           default: false
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["remember_token"], name: "index_users_on_remember_token"
 
 end

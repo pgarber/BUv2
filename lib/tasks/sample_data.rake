@@ -4,6 +4,10 @@ namespace :db do
     make_users
     make_microposts
     make_relationships
+    make_companies
+    make_feedbacks
+    make_projects
+    make_project_feedbacks
     make_company_employees
   end
 end
@@ -44,7 +48,27 @@ def make_relationships
 
 end
 
-#TODO: put in sample_data for feedbacks also
+def make_companies
+  Company.create!(domain: example.com, name: Example )
+end
+
+def make_feedbacks
+  Feedbacks.create!(from_id: "1", to_id: "2", attribute_identifier: "5")
+  Feedbacks.create!(from_id: "4", to_id: "2", attribute_identifier: "5")
+  Feedbacks.create!(from_id: "8", to_id: "2", attribute_identifier: "6")
+  Feedbacks.create!(from_id: "1", to_id: "2", attribute_identifier: "1")
+  Feedbacks.create!(from_id: "1", to_id: "2", attribute_identifier: "1001", rating: "8")
+end
+
+def make_projects
+  Project.create!(name: "Factory cost reduction", domain_id: "1")
+  Project.create!(name: "Competitor acquisition", domain_id: "1")
+end
+
+def make_project_attributes
+  ProjectAttributes.create!()
+def make_project_feedbacks
+  Project.create!(com)
 
 #not sure why I need to do this because I think make_users should call User.create, but it seems not to.
 def make_company_employees  # need your company (example.com) to already exist in  Company table

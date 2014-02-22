@@ -114,7 +114,7 @@ $ rake db:populate
 $ rake db:seed # for attributes
 
 Now, on to the next table: Project
-$ rails g controller Project new --no-test-framework   # should have been Projects here - with an "s"!
+WRONG: $ rails g controller Project new --no-test-framework   # should have been Projects here - with an "s"!
 $ rails g model Project name:string domain_id:integer 
 
 
@@ -135,4 +135,15 @@ It's a little confusing how my styling is put together now and I don't have it a
 The navbar is called in _header.html.erb.
 The two relevant css files are app/assets/custom.css.scss and bootswatch_simplex.css.scss
 
-Todo: I should put a uniqueness on ProjectAttribute identifier the next time I do a migration
+ProjectFeedback tables:
+$ rails g controller ProjectFeedbacks new --no-test-framework   
+$ rails g model ProjectFeedback from_id:integer to_project_id:integer project_attribute_identifier: integer rating_given:integer 
+add project_attribute table's identifier uniqueness to this migration
+$ rake db:migrate
+
+All of a sudden, users is gone from tmy sqlite db and schema.rb.  views controllers, helpers and models is still there though.  It looks like I tried to dumb table users before, and that was unsuccesful.
+Put the users code back into schema.rb
+$ rake db:schema:load
+$ rake db:seed
+$ rake db:populate  # users populated but company_employees 
+
