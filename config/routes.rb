@@ -1,4 +1,5 @@
 SampleApp::Application.routes.draw do
+  get "project_feedbacks/new"
   get "project_attributes/new"
 #  get "project/new"  # todo: remove these like Listing 7.3?  to be RESTful
   get "company_employees/new"  # will removing this make db:populate also create company_employees without the extra function?

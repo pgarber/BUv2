@@ -9,9 +9,13 @@ namespace :db do
     make_feedbacks
     make_company_employees
     make_projects
-    #make_project_feedbacks
+    make_project_feedbacks
   end
 end
+
+# not generated here:
+#   attributes and project_attributes are in seeds.rb
+#   ratings and project_ratings are created by rake db:crunch_ratings
 
 def clear_db
   users = User.all
@@ -24,8 +28,8 @@ def clear_db
   co_emp.delete_all
   projects = Project.all
   projects.delete_all
-  #proj_fb = ProjectFeedback.all
-  #proj_fb.delete_all
+  proj_fb = ProjectFeedback.all
+  proj_fb.delete_all
 end
 
 
