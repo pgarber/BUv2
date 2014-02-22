@@ -7,12 +7,18 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 #Attribute.create(attribute_name: 'Technical guru', good: 'true', opposite_id: 2)
 #Attribute.create(attribute_name: 'Needs to gain experience', good: 'false', opposite_id: 1)
-# then run $ rake db:setup
-# $ rake db:reset
-# $ rake db:populate
-# don't need: $ rake test:prepare
-# restart rails server
+# then run $ rake db:setup ?
+# $ rake db:reset           ?
+# $ rake db:populate        ?
+# don't need: $ rake test:prepare   ?
+# restart rails server 
 
+# before re-seeding, need to make sure the tables are empty or there will be a uniqueness error
+# rails console
+# > attrib = Attribute.all
+# > attrib.delete_all
+# > exit
+# rake db:seed
 
 attribute_list = [
   [ 1, "Technical guru", 'true', 2 ],
@@ -85,11 +91,18 @@ attribute_list = [
   [ 1003, "Initiative", '1to10', 999],
   [ 1004, "Communication", '1to10', 999],
   [ 1005, "Leadership", '1to10', 999]
-
-
 ]
 
 attribute_list.each do |identifier, attribute_name, good, opposite_identifier|
   Attribute.create( identifier: identifier, attribute_name: attribute_name, 
                   good: good, opposite_identifier: opposite_identifier )
+end
+
+project_attribute_list = [
+  [ 1, "Strategy" ],   # for now, leave out project_id because strategy and execution will be applied to all
+  [ 2, "Execution" ]
+  ]
+
+project_attribute_list.each do |id, project_attribute_name|
+  ProjectAttribute.create( identifier: id, project_attribute_name: project_attribute_name )
 end

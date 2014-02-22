@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140220193856) do
+ActiveRecord::Schema.define(version: 20140221171250) do
 
   create_table "attributes", force: true do |t|
     t.string   "attribute_name"
@@ -56,6 +56,14 @@ ActiveRecord::Schema.define(version: 20140220193856) do
 
   add_index "microposts", ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
 
+  create_table "project_attributes", force: true do |t|
+    t.integer  "identifier"
+    t.string   "project_attribute_name"
+    t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "projects", force: true do |t|
     t.string   "name"
     t.integer  "domain_id"
@@ -81,8 +89,5 @@ ActiveRecord::Schema.define(version: 20140220193856) do
   add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id"
   add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
   add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id"
-
-# Could not dump table "users" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
 
 end

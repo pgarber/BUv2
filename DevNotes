@@ -122,3 +122,17 @@ todo:
 fix homepage so that it doesn't error when ratings aren't right
 crunch_ratings comes up with 1 - is that because the feedback only came from 1 other user? When  I gave more ratings from the same person after a rake, the new ratings went in.  I think that crunch_ratings
 ignores multiple feedbacks of the same type on the same day / crunch_ratings
+
+Not sure I need this but create ProjectActtribute:
+$ rails g controller ProjectAttributes new --no-test-framework   
+$ rails g model ProjectAttribute identifier:integer project_attribute_name:string project_id:integer 
+$ rake db:migrate
+
+Side project: change the navbar appearance.
+It seems like "navbar navbar-fixed-top navbar-inverse" and "navbar-inner" are missing from any css file.  So maybe the navbar is defaulting.  Try adding in the css definitions
+views/layouts/_header is the only file that calls a header
+It's a little confusing how my styling is put together now and I don't have it all figured out.  I might just want to use a nice theme like geteco.com - If I could find that theme.  
+The navbar is called in _header.html.erb.
+The two relevant css files are app/assets/custom.css.scss and bootswatch_simplex.css.scss
+
+Todo: I should put a uniqueness on ProjectAttribute identifier the next time I do a migration

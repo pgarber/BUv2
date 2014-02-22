@@ -1,0 +1,2 @@
+module ProjectAttributesHelper
+end
