@@ -146,5 +146,9 @@ Put the users code back into schema.rb
 $ rake db:schema:load
 $ rake db:seed
 $ rake db:populate  # users populated but company_employees 
-todo: project_feedbacks has a integer column in it.
 
+To get the db in order:
+$ rake db:seed   #order of seed & populate shouldn't matter
+$ rake db:populate
+$ rake db:migrate
+$ rake db:crunch_ratings

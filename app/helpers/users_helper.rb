@@ -82,14 +82,18 @@ module UsersHelper
 		@users = User.all
 
 		# it would be more explicit to order these by date first, but it's most likely in date order
-		last_user_id = @ratings.pop.user_id
+		#last_user_id = @ratings.pop.user_id
 		count = 1  
-		while count <= 3 # go until you have 3 users identified to show	
+		@ratings.each do |rating|
+		  if count > 3
+			return
+		  end	 
+  		  last_user_id = @ratings.pop.user_id
   		  unless @show_user_id.include?(last_user_id)
 			@show_user_id.push(last_user_id)
 			count += 1
 		  end
-		  	last_user_id = @ratings.pop.user_id
+
 		end
 	end
 end
