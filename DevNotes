@@ -137,7 +137,7 @@ The two relevant css files are app/assets/custom.css.scss and bootswatch_simplex
 
 ProjectFeedback tables:
 $ rails g controller ProjectFeedbacks new --no-test-framework   
-$ rails g model ProjectFeedback from_id:integer to_project_id:integer project_attribute_identifier: integer rating_given:integer 
+$ rails g model ProjectFeedback from_id:integer to_project_id:integer project_attribute_identifier:integer rating_given:integer 
 add project_attribute table's identifier uniqueness to this migration
 $ rake db:migrate
 
@@ -146,4 +146,5 @@ Put the users code back into schema.rb
 $ rake db:schema:load
 $ rake db:seed
 $ rake db:populate  # users populated but company_employees 
+todo: project_feedbacks has a integer column in it.
 
