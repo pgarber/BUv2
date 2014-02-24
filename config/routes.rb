@@ -28,8 +28,9 @@ SampleApp::Application.routes.draw do
   match 'feedbacks/complete/:id', to: 'feedbacks#complete', via: 'post' 
   match 'feedbacks/slider_complete/:id', to: 'feedbacks#slider_complete', via: 'post' 
   match '/myfeedback', to: 'users#myfeedback',  via: 'get'
-  match '/newproject', to: 'projects#new',      via: 'get'
-
+  match '/newproject', to: 'projects#new',      via: 'get'  # improve this
+  match '/projects', to: 'projects#index',      via: 'get'  # I think if resources :projects is working, I shouldn't need this
+  match '/projects/:id', to: 'projects#show',   via: 'get'  # I think if resources :projects is working, I shouldn't need this
 
   #get "static_pages/home"  
   get "users/home"

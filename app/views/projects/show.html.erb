@@ -12,9 +12,20 @@
       <div class="well well-sm">
         <% project = Project.find_by(id: params[:id]) %>  
         <p><b><%= project.name + " | " + Company.find_by(id: project.domain_id).name %> </b></p>
-        <% graph_project_data(project.id) %>  <%# get all the attributes for this project and load into @show_project_attributes %>
-        <%= bar_chart @show_project_attributes, :height => "250px"%> <%# call chartkick %>
+
+        <%# put these two back in once we have ProjectRating table %>
+        <%# graph_project_data(project.id) %>  <%# get all the attributes for this project and load into @show_project_attributes %>
+        <%#= bar_chart @show_project_attributes, :height => "250px"%> <%# call chartkick %>
+        Strategy
+        <% histogram_project_data(project.id, "1") %> <%# set @proj_hist_data for first attrib%>  
+        <%= column_chart @proj_hist_data, :height => "250px" %> <%# chartkick pseudo-histogram %>
+
+        Execution
+        <% histogram_project_data(project.id, "2") %> <%# set @proj_hist_data for second attrib%>  
+        <%= column_chart @proj_hist_data, :height => "250px" %> <%# chartkick pseudo-histogram %>
       </div>
+
+
 
       <div class="well well-sm">
         <p></p>

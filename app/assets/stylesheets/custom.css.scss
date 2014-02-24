@@ -214,6 +214,20 @@ input {
   }
 }
 
+.projects {
+  list-style: none;
+  margin: 0;
+  li {
+    font-size:large;
+    overflow: auto;
+    padding: 10px 0;
+    border-top: 5px solid $grayLighter;
+    &:last-child {
+      border-bottom: 3px solid $grayLighter;
+    }
+  }
+}
+
 /* microposts */
 
 .microposts {

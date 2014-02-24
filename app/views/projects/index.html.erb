@@ -1,0 +1,12 @@
+<%# PROJECTS/index.html.erb  #################### %>
+<% provide(:title, 'All projects') %>
+<% company_id = CompanyEmployee.find_by(user_id: (current_user.id)).company_id %>
+<h1><%= Company.find_by(id: company_id).name %> | All Projects</h1>
+
+<%= will_paginate %> 
+
+<ul class="projects"> <%# tells it to use the .projects in custom.css.scss%>
+	<%= render @projects %><%# renders _project.html.erb and passes the project%>
+</ul>
+
+<%= will_paginate %> 

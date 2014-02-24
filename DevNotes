@@ -155,4 +155,7 @@ $ rake db:crunch_ratings
 
 Next to do: make page for rating company projects and one for viewing results.  Or should they be the same?  Also, a histogram would be nice for projects also.  Right now I don't have a page for showing a given user's performance.  Should that be on the same page as the rating inputs?  That would be easier from a design perspective but probably worse from the stanpoint of getting accurate input.  Probably get more feedback with input and output of ratings on the same page.  
 
-So, at the top of users/show and projects/show, put the graphs.  
+So, at the top of users/show and projects/show, put the graphs.  - Done
+
+Next, show only for users and projects in your own company.  Also, make sure startegy data is working & plotting correctly
+
