@@ -1,0 +1,74 @@
+<%# this is PROJECT/show.html.erb %>
+
+    <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %> <%# need this on any page that has a chart %>
+
+
+<br>
+<div class="container">
+  <div class="row">
+    <%= render "users/signed_in_sidebar" %>
+    <div class="col-md-7">
+      <!-- this is the main section -->
+      <div class="well well-sm">
+        <% project = Project.find_by(id: params[:id]) %>  
+        <p><b><%= project.name + " | " + Company.find_by(id: project.domain_id).name %> </b></p>
+        <% graph_project_data(project.id) %>  <%# get all the attributes for this project and load into @show_project_attributes %>
+        <%= bar_chart @show_project_attributes, :height => "250px"%> <%# call chartkick %>
+      </div>
+
+      <div class="well well-sm">
+        <p></p>
+    
+        <h4>Give feedback for <%= @project.name %></h4>   <%# @project msut be set by what called show %>
+
+        <div class="row">
+          <div class="col-md-5" align="left">
+            <p>Let your company know what you think of this project. </p>
+            <p></p>
+            <p>10 is Best</p>
+            <p></p>
+            <p>1 is Worst</p>
+          </div>
+          <div class="col-md-5">
+
+            <%= form_tag("/feedbacks/slider_complete/"+params[:id],  :method => "post", :remote => true) do %> 
+
+              <b>Strategy:</b> <span id="strategyRange">No Rating</span>
+              <input type="range" min="0" max="10" value="0" step="1" onchange="strategyValue(this.value)" name="strategyScore" />  
+              <br>
+
+              <b>Execution:</b> <span id="executionRange">No Rating</span>
+              <input type="range" min="0" max="10" value="0" step="1" onchange="executionValue(this.value)" name="executionScore" />  
+
+              <p></p>
+
+              <script type="text/javascript">
+
+                 function strategyValue(newValue)
+                 {
+                   document.getElementById("strategyRange").innerHTML=newValue;
+                   if (newValue == 0)
+                    { document.getElementById("strategyRange").innerHTML="No rating" }
+                 }
+                 function executionValue(newValue)
+                 {
+                   document.getElementById("executionRange").innerHTML=newValue;
+                    if (newValue == 0)
+                    { document.getElementById("executionRange").innerHTML="No rating" }
+                 }
+                 
+              </script>
+              
+              <p></p>
+              <%= submit_tag("Submit rating feedback", :class=>"btn btn-success", :onclick => "return validateform(#{@variable});") %>
+            <%end%>  <%# end form tag do %>
+
+            <% all_attributes = ProjectAttribute.all %>
+          </div>
+        </div>
+      </div> 
+    </div>
+  </div>
+</div>
+
+

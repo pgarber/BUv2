@@ -1,3 +1,4 @@
+    <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %> <%# need this on any page that has a chart %>
 
 
 <br>
@@ -6,6 +7,13 @@
     <%= render "users/signed_in_sidebar" %>
     <div class="col-md-7">
       <!-- this is the main section -->
+      <div class="well well-sm">
+        <% user = User.find_by(id: params[:id]) %>  
+        <p><b><%= user.name + " | " + user.email %> </b></p>
+        <% graph_data(user.id) %>  <%# get the top 5 attributes for this user and set them in @show_attributes %>
+        <%= bar_chart @show_attributes, :height => "200px"%> <%# call chartkick %>
+      </div>
+
       <div class="well well-sm">
         <p></p>
     
