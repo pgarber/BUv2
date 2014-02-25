@@ -11,6 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+# From SE: For new installations you should be running rake db:schema:load, not 
+# rake db:migrate, this will load the schema into the database, which is faster than running all the 
+# migrations.
+
+# You should never delete migrations, and certainly not combine them. As for accidentally deleting 
+# one, you should be using a version control system, such as Git.
+
 ActiveRecord::Schema.define(version: 20140222195953) do
 
   create_table "attributes", force: true do |t|
@@ -38,6 +45,8 @@ ActiveRecord::Schema.define(version: 20140222195953) do
     t.datetime "updated_at"
   end
 
+  add_index "company_employees", ["company_id", "user_id"], name: "index_company_employees_on_company_id_and_user_id"
+
   create_table "feedbacks", force: true do |t|
     t.integer  "from_id"
     t.integer  "to_id"
@@ -46,6 +55,8 @@ ActiveRecord::Schema.define(version: 20140222195953) do
     t.datetime "updated_at"
     t.float    "rating_given"
   end
+
+  add_index "feedbacks", ["from_id", "to_id"], name: "index_feedbacks_on_from_id_and_to_id"
 
   create_table "microposts", force: true do |t|
     t.string   "content"
@@ -65,6 +76,7 @@ ActiveRecord::Schema.define(version: 20140222195953) do
   end
 
   add_index "project_attributes", ["identifier"], name: "index_project_attributes_on_identifier", unique: true
+  add_index "project_attributes", ["project_id"], name: "index_project_attributes_on_project_id"
 
   create_table "project_feedbacks", force: true do |t|
     t.integer  "from_id"
@@ -75,12 +87,17 @@ ActiveRecord::Schema.define(version: 20140222195953) do
     t.datetime "updated_at"
   end
 
+  add_index "project_feedbacks", ["from_id", "to_project_id"], name: "index_project_feedbacks_on_from_id_and_to_project_id"
+
   create_table "projects", force: true do |t|
     t.string   "name"
     t.integer  "domain_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "projects", ["domain_id"], name: "index_projects_on_domain_id"
+
 
   create_table "ratings", force: true do |t|
     t.integer  "user_id"
@@ -89,6 +106,8 @@ ActiveRecord::Schema.define(version: 20140222195953) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "ratings", ["user_id"], name: "index_ratings_on_user_id"
 
   create_table "relationships", force: true do |t|
     t.integer  "follower_id"

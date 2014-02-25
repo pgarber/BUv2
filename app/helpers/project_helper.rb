@@ -1,8 +1,37 @@
 module ProjectHelper
 
+	def histogram_project_data(target_project_id, target_project_attribute)
+	  @proj_hist_data = { "1" => 0, "2" => 0, "3" => 0, "4" => 0, "5" => 0, "6" => 0, "7" => 0, "8" => 0, "9" => 0, "10" => 0, }
+	  relevant_data = ProjectFeedback.where(to_project_id: target_project_id, 
+	  							project_attribute_identifier: target_project_attribute)
+	  relevant_data.each do |feedback|
+	  	@proj_hist_data[ feedback.rating_given ] = @proj_hist_data[ feedback.rating_given ].to_i + 1
+	  end
+
+
+	  # @project_feedbacks.each do |feedback|
+	  # 	if feedback.to_project_id == target_project_id # if the feedback is for this project
+	  # 	  if feedback.project_attribute_identifier == target_project_attribute.to_i
+		 #  	@proj_hist_data[ feedback.rating_given ] = @proj_hist_data[ feedback.rating_given ].to_i + 1
+		 #  end
+	  # 	end
+	  # end
+	end
+
+
+
+
+
 	def graph_project_data(target_project_id)
 	  # this is not complete yet
-	  	
+	  # don't need this for now since I just do histogram
+	  ####################################################################################
+	  ####################################################################################
+	  ####################################################################################
+	  ####################################################################################
+	  ####################################################################################
+	  ####################################################################################
+	  ####################################################################################	
 	  print "in projectsHelper graph_data "
 
 	  # format data into an array of arrays for chartkick - get top 5 positive attributes and top 1 negative attribute
@@ -27,23 +56,17 @@ module ProjectHelper
 	      count+=1 
 	    # end
 	  end
+	  	  # this is not complete yet
+	  # don't need this for now since I just do histogram
+	  ####################################################################################
+	  ####################################################################################
+	  ####################################################################################
+	  ####################################################################################
+	  ####################################################################################
+	  ####################################################################################
+	  ####################################################################################
 
 	end
 
-	def histogram_project_data(target_project_id, target_project_attribute)
-
-	  @show_project_attributes=Array.new #?? needed?
-	  @project_feedbacks = ProjectFeedback.all  # this is such a bad way to do this
-	  @attributes = ProjectAttribute.all
-
-	  @proj_hist_data = { "1" => 0, "2" => 0, "3" => 0, "4" => 0, "5" => 0, "6" => 0, "7" => 0, "8" => 0, "9" => 0, "10" => 0, }
-	  @project_feedbacks.each do |feedback|
-	  	if feedback.to_project_id == target_project_id # if the feedback is for this project
-	  	  if feedback.project_attribute_identifier == target_project_attribute.to_i
-		  	@proj_hist_data[ feedback.rating_given ] = @proj_hist_data[ feedback.rating_given ].to_i + 1
-		  end
-	  	end
-	  end
-	end
 end
 

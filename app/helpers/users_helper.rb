@@ -77,8 +77,20 @@ module UsersHelper
 	end
 
 	def users_to_graph()
+
+	#   @proj_hist_data = { "1" => 0, "2" => 0, "3" => 0, "4" => 0, "5" => 0, "6" => 0, "7" => 0, "8" => 0, "9" => 0, "10" => 0, }
+	  # relevant_data = ProjectFeedback.where(to_project_id: target_project_id, 
+	  # 							project_attribute_identifier: target_project_attribute)
+	  # relevant_data.each do |feedback|
+	  # 	@proj_hist_data[ feedback.rating_given ] = @proj_hist_data[ feedback.rating_given ].to_i + 1
+	  # end
+
+	  #idea: set up the proper join table and belongs_to.  Then, get ratings just for users in the user's company
+
 		@show_user_id = Array.new # this array will contain 3 user_id's (in order) to graph
-		@ratings = Rating.all
+
+
+		@ratings = Rating.where()
 		@users = User.all
 
 		# it would be more explicit to order these by date first, but it's most likely in date order

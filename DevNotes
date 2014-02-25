@@ -157,5 +157,29 @@ Next to do: make page for rating company projects and one for viewing results.  
 
 So, at the top of users/show and projects/show, put the graphs.  - Done
 
-Next, show only for users and projects in your own company.  Also, make sure startegy data is working & plotting correctly
+Next, show only for users and projects in your own company.  Also, make sure startegy data is working & plotting correctly. 
+Back on branch master
 
+Project: index foreign keys and use them!
+	my analysis of foreign keys:
+	users: none
+	attributes: none
+	feedbacks: from_id, to_id, attribute_identifier
+	microposts: user_id (look at Hartl code) doesn't show up below since it's already indexed
+	ratings: user_id, attribute_identifier
+	companies: none
+	company_employees: company_id, user_id  - make this a join table if not already.
+	projects: domain_id
+	project_attributes: project_id
+	missed: project_feedbacks: from_id, to_project_id
+
+
+	method from https://tomafro.net/2009/09/quickly-list-missing-foreign-key-indexes
+	company_employees: company_id, user_id
+	feedbacks: from_id, to_id   [not attribute_identifier ??]
+	project_attributes: project_id
+	projects: domain_id
+	ratings: user_id [not attribute_identifier ???]
+	project_feedbacks: from_id, to_project_id
+
+	First, put all these indexes in schema.rb and get everything working.  Then, go one step further and replace company_employees witha join table (see Rails Recipes first recipe)

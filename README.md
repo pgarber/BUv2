@@ -6,9 +6,9 @@ Ruby 2.0.0p247
 SQLite
 Bootstrap
 
+$ rake db:schema:load
 $ rake db:seed   	# Attributes and ProjectAttributes
 $ rake db:populate  # sample users and other sample data
-$ rake db:migrate
 $ rake db:crunch_ratings  # creates ratings based on feedbacks
 
 $ rails server
