@@ -51,50 +51,28 @@ module UsersHelper
 	      count+=1 	
 	    end
 	  end
-
-	  #   original method, working, which only found + attributes
-	  # @good_attributes=Array.new
-	  # @ratings = Rating.all
-	  # @attributes=Attribute.all
-	  # users_ratings = Array.new
-	  # @ratings.each do |rating|
-	  # 	if rating.user_id == target_user_id  #if the rating is for this user
-	  #     if @attributes.find_by(id: rating.attribute_id).good == 'true'  # and if it's a good rating
-	  #     	users_ratings.push(rating)  
-	  #     end
-	  #   end
-	  # end
-	  # users_ratings.sort! { |a,b| b.current_rating <=> a.current_rating } # sort by current rating
-	  # count=1
-	  # users_ratings.each do |rating|
-	  # 	if count <=5
-	  # 	  this_attribute_name = @attributes.find_by(id: rating.attribute_id).attribute_name
-	  #     @good_attributes.push([this_attribute_name, rating.current_rating])
-	  #     count+=1 	
-	  #   end
-	  # end
-
 	end
 
 	def users_to_graph()
-
-	#   @proj_hist_data = { "1" => 0, "2" => 0, "3" => 0, "4" => 0, "5" => 0, "6" => 0, "7" => 0, "8" => 0, "9" => 0, "10" => 0, }
-	  # relevant_data = ProjectFeedback.where(to_project_id: target_project_id, 
-	  # 							project_attribute_identifier: target_project_attribute)
-	  # relevant_data.each do |feedback|
-	  # 	@proj_hist_data[ feedback.rating_given ] = @proj_hist_data[ feedback.rating_given ].to_i + 1
-	  # end
-
-	  #idea: set up the proper join table and belongs_to.  Then, get ratings just for users in the user's company
-
 		@show_user_id = Array.new # this array will contain 3 user_id's (in order) to graph
+		# puts "current_user.company.name #{current_user.company.name}"
+		# puts "current_user.company.id #{current_user.company.id}"
 
-
-		@ratings = Rating.where()
-		@users = User.all
+		colleagues = current_user.company.users  # cool!  
+		#There is even a way to just do per last paragraph of Rails recipes, recipe 1.
 
 		# it would be more explicit to order these by date first, but it's most likely in date order
 		#last_user_id = @ratings.pop.user_id
+
+		all_ratings = Rating.all   # this still needs optimization
+		@ratings = Array.new
+		colleague_ids = colleagues.map(&:id)
+		all_ratings.each do |rating|
+		  if colleague_ids.include?(rating.user_id)  # if rating is for a colleague
+		  	@ratings.push(rating)
+		  end
+		end
+
 		count = 1  
 		@ratings.each do |rating|
 		  if count > 3
@@ -105,7 +83,6 @@ module UsersHelper
 			@show_user_id.push(last_user_id)
 			count += 1
 		  end
-
 		end
 	end
 end

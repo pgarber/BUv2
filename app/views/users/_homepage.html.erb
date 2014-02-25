@@ -73,6 +73,10 @@
                 <%= bar_chart @show_attributes, :height => "200px"%> <%# call chartkick %>
             </div>
           <% end %>
+          <% if @show_user_id.size.to_i < 1 %>
+            <div class="well well-sm"> <b> No colleagues with ratings yet - go to Colleagues to give feedback! </b>
+            </div>
+          <% end %>  
 
 
           

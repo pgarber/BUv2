@@ -183,3 +183,19 @@ Project: index foreign keys and use them!
 	project_feedbacks: from_id, to_project_id
 
 	First, put all these indexes in schema.rb and get everything working.  Then, go one step further and replace company_employees witha join table (see Rails Recipes first recipe)
+	In the models, I might need belongs_to like microposts has
+
+	histogram_project_data I made a lot simpler and, I think, faster.  not sure I used any of the new
+	indexes though.
+
+	$ rails g migration change_company_employees_to_employment   #NO - deleted the file!  Dont bother renaming it.  
+	Companies have many users through company_employees.  use "has many through" rather than "has many and belongs to many".  Since I set up a controller and a model for company_employees, it is a join model (just not named perfectly), rather than just being a join table.  
+
+	class CompanyEmployee model
+	   belongs_to: user
+	   belongs_to: company
+	
+	class Company < ActiveRecord::Base
+	  has_many :company_employees
+  	  has_many :users, :trhough => :company_employees
+  	  

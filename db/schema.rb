@@ -11,13 +11,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-# From SE: For new installations you should be running rake db:schema:load, not 
-# rake db:migrate, this will load the schema into the database, which is faster than running all the 
-# migrations.
-
-# You should never delete migrations, and certainly not combine them. As for accidentally deleting 
-# one, you should be using a version control system, such as Git.
-
 ActiveRecord::Schema.define(version: 20140222195953) do
 
   create_table "attributes", force: true do |t|
@@ -97,7 +90,6 @@ ActiveRecord::Schema.define(version: 20140222195953) do
   end
 
   add_index "projects", ["domain_id"], name: "index_projects_on_domain_id"
-
 
   create_table "ratings", force: true do |t|
     t.integer  "user_id"

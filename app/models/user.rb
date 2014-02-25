@@ -8,8 +8,13 @@ class User < ActiveRecord::Base
     has_many :followers, through: :reverse_relationships, source: :follower
   	before_save { self.email = email.downcase } # 
   	before_create :create_remember_token
+    has_one :company_employee
+    has_one :company, :through => :company_employee  # was has_many
+    # has_many :colleagues, :through => :company_employees, 
+    #           :conditions => [] 
+  	
 
-  	#??
+    #?? todo: figure this out:
   	#before_save { email.downcase! } # putting this in or out changes the errors ??# { self.email = email.downcase } 
   	#
 	validates :name, presence: true, length: { maximum: 50 }
