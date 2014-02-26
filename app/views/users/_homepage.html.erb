@@ -19,46 +19,19 @@
         
         <div class="col-md-7">
 
-          <div class="well well-sm">
-            <%#= render "users/chart1" %>  <%# call for graph ######## %>
-            <%#= render "users/chart2" %>  <%# call for graph ######## %>
-            <h4>Factory cost reduction</h4>
-            <div class="row">
-              <div class="col-md-5" align="right">
-                <p>Strategy</p>
-                <p>Execution</p>
-              </div>
-              <div class="col-md-6">
-                <div class="progress">
-                  <div class="progress-bar" style="width: 50%;"></div>
-                </div>
-                <div class="progress">
-                  <div class="progress-bar" style="width: 40%;"></div>
-                </div>
-              </div>
+          <% projects_to_graph() %> <%# call a function in projects_helper that sets a list of project id's to show ratings graphs for on the homepage %>
+          <% @show_project_id.each do |project_id| %>                  
+            <div class="well well-sm">
+              <% project = Project.find_by(id: project_id) %>  
+              <p><b><%= project.name %> </b></p>
+                <% graph_project_data(project_id) %>  
+                <%= bar_chart @all_rating_data, :height => "200px"%> <%# call chartkick %>
             </div>
-          </div>
-          <div class="well well-sm">
-            <h4>Competitor acquisition</h4>
-            <div class="row">
-              <div class="col-md-5" align="right">
-                <p>Strategy</p>
-                <p>Execution</p>
-              </div>
-              <div class="col-md-6">
-                <div class="progress">
-                  <div class="progress-bar" style="width: 80%;"></div>
-                </div>
-                <div class="progress">
-                  <div class="progress-bar" style="width: 20%;"></div>
-                </div>
-              </div>
+          <% end %>
+          <% if @show_project_id.size.to_i < 1 %>
+            <div class="well well-sm"> <b> No projects with ratings yet. Give input to your <%= link_to "Projects", projects_path %> </b>
             </div>
-          </div>
-
-
-          <%# insert graphs for all coworker_chart for all users %>
-          <%#= will_paginate %> <%# put this before or after render? %>
+          <% end %>         
           
           <!-- <ul class="coworker_charts">  -->
             <%#= render @users %>

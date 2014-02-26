@@ -199,4 +199,15 @@ Project: index foreign keys and use them!
 	  has_many :company_employees
   	  has_many :users, :trhough => :company_employees
 
+$ rails g model ProjectRating project_id:integer project_attribute_identifier:integer current_rating:float num_fb_received:float
+$ rake db:migrate
+-> didn't do a controller because I don't need it.  Do I even need a model, or just a table?
+$ add_column :project_feedbacks, :accounted_for, :datetime
+
+define these:
+a project belongs to a company  (or has_one ?)
+a company has_many projects
+a project_rating belongs_to a project
+a project has_many project_ratings
+a company has_many project_ratings through project - no, I don't think it does.  company_id is in project but project_rating's id is not
   	

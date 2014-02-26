@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140226161108) do
+ActiveRecord::Schema.define(version: 20140226195059) do
 
   create_table "attributes", force: true do |t|
     t.string   "attribute_name"
@@ -79,9 +79,19 @@ ActiveRecord::Schema.define(version: 20140226161108) do
     t.integer  "rating_given"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "accounted_for"
   end
 
   add_index "project_feedbacks", ["from_id", "to_project_id"], name: "index_project_feedbacks_on_from_id_and_to_project_id"
+
+  create_table "project_ratings", force: true do |t|
+    t.integer  "project_id"
+    t.integer  "project_attribute_identifier"
+    t.float    "current_rating"
+    t.float    "num_fb_received"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "projects", force: true do |t|
     t.string   "name"

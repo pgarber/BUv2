@@ -6,14 +6,13 @@ namespace :db do
   desc "Take data in Feedback and aggregate into Ratings"
   task crunch_ratings: :environment do
     make_ratings
+    make_project_ratings
 
   end
 end
 
 
 def make_ratings
-  # does this correctly handle ratings? no.  add it.
-
   new_feedback = Feedback.where(:accounted_for.nil?) # only pull in new feedback
   new_feedback.each do |vote|  
     vote.accounted_for = Time.now
@@ -79,6 +78,49 @@ def make_ratings
           current_rating: vote.rating_given, num_fb_received: 1)
       end
 
+    end
+ 
+  end  # end of each          
+
+end
+
+
+def make_project_ratings
+  new_feedback = ProjectFeedback.where(:accounted_for.nil?) # only pull in new feedback
+  new_feedback.each do |vote|  
+    vote.accounted_for = Time.now
+    if vote.save
+      print "accounted_for_saved "
+    else
+      print "accounted_for_saveFAILED " 
+    end
+    if ProjectRating.exists?(project_id: vote.to_project_id, # if they've received feedback on this rating before
+                            project_attribute_identifier: vote.project_attribute_identifier) 
+      @rating = ProjectRating.find_by(project_id: vote.to_project_id, 
+                            project_attribute_identifier: vote.project_attribute_identifier) 
+
+      unless @rating.current_rating  
+        @rating.current_rating = 0
+      end
+      unless @rating.num_fb_received  
+        @rating.num_fb_received = 0
+      end
+      @rating.current_rating ||= 0  # do these do anything?
+      @rating.num_fb_received ||= 0
+
+      @rating.current_rating = (@rating.current_rating * @rating.num_fb_received + vote.rating_given) / (@rating.num_fb_received + 1)
+      @rating.num_fb_received += 1
+      if @rating.save
+        print "saved "
+      else
+        print "saveFAILED "
+      end
+    else  # this project never got this feedback before, so its score will be the rating_given.
+      puts " never received #{vote.project_attribute_identifier} before "
+      ProjectRating.create!(project_id: vote.to_project_id, 
+                            project_attribute_identifier: vote.project_attribute_identifier, 
+                            current_rating: vote.rating_given, 
+                            num_fb_received: 1)
     end
  
   end  # end of each          

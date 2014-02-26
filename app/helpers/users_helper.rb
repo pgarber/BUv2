@@ -9,7 +9,7 @@ module UsersHelper
   end
 
 
-	def graph_data(target_user_id)
+	def graph_data(target_user_id) # gathers & prepares data in @show_attributes for kickchart graphing
 	  print "in graph_data "
 
 	  # format data into an array of arrays for chartkick - get top 5 positive attributes and top 1 negative attribute
@@ -85,7 +85,6 @@ module UsersHelper
 		  end
 		end
 	end
-end
 
 
 	def graph_all_data(target_user_id)
@@ -150,3 +149,4 @@ end
 	  end
 	end
 
+end
