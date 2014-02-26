@@ -198,4 +198,5 @@ Project: index foreign keys and use them!
 	class Company < ActiveRecord::Base
 	  has_many :company_employees
   	  has_many :users, :trhough => :company_employees
-  	  
+
+  	

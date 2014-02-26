@@ -1,118 +1,31 @@
+<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %> <%# need this on any page that has a chart %>
 
 
 <%# provide(:title, @user.name) # why did this not get @user.  When this code was in show.html.erb, it had @user ? %> 
 <%# maybe OK that I put current_user every palce that @user was - to start, we only want to show this for current_user.  Down the road, once your boss has access, that will change %>
 <% provide(:title, current_user.name) %>
 
-      <br>
-    <div class="container">
-      <div class="row">
-      <!-- this is the sidebar.  Remember to put the co. strategy ratings back in.  -->
-        <%= render "users/signed_in_sidebar" %>        
-        <div class="col-md-7">
-          <!-- this is the main section -->
-          <div class="well well-sm">
-            <p></p>
-            <h4><%= current_user.name %>, <%= current_user.email %></h4>
+  <br>
+  <div class="container">
+  <div class="row">
+  <!-- this is the sidebar.  Remember to put the co. strategy ratings back in.  -->
+    <%= render "users/signed_in_sidebar" %>        
+    <div class="col-md-7">
 
-
-            <p></p>
-            <div class="row">
-              <div class="col-md-5" align="right">
-                <p>Ambitious</p>
-                <p>Lead by example</p>
-                <p>Great with customers</p>
-                <p>Married to the job</p>
-                <p>Big picture thinker</p>
-                <p>Reliable</p><br>
-                <div class="progress">
-                  <div class="progress-bar progress-bar-danger" style="width: 70%;"></div>
-                </div>
-                <div class="progress">
-                  <div class="progress-bar progress-bar-danger" style="width: 50%;"></div>
-                </div>
-                <div class="progress">
-                  <div class="progress-bar progress-bar-danger" style="width: 40%;"></div>
-                </div>
-                <div class="progress">
-                  <div class="progress-bar progress-bar-danger" style="width: 30%;"></div>
-                </div>
-                <div class="progress">
-                  <div class="progress-bar progress-bar-danger" style="width: 10%;"></div>
-                </div>
-              </div>
-              <div class="col-md-5">
-                <div class="progress">
-                  <div class="progress-bar" style="width: 80%;"></div>
-                </div>
-                <div class="progress">
-                  <div class="progress-bar" style="width: 60%;"></div>
-                </div>
-                <div class="progress">
-                  <div class="progress-bar" style="width: 30%;"></div>
-                </div>
-                <div class="progress">
-                  <div class="progress-bar" style="width: 20%;"></div>
-                </div>
-                <div class="progress">
-                  <div class="progress-bar" style="width: 20%;"></div>
-                </div>
-                <p>Needs to better market understanding</p>
-                <p>Needs a role with better fit</p>
-                <p>Needs to give credit where due</p>
-                <p>Needs to not rest on laurels</p>
-                <p>Needs better follow up on actions</p>
-              </div>
-            </div>
-          </div>
-          <div class="well well-sm">
-          <h4>Job performance based on 7 reviewers</h4>
-            <div class="row">
-              <div class="col-md-5" align="right">
-              <font size="4">
-                <p>Results</p>
-                <p></p>
-                <p>Job Knowledge</p>
-                <p></p>
-                <p>Initiative</p>
-                <p></p>
-                <p>Communication</p>
-                <p></p>
-                <p>Leadership</p>
-              </font>
-              </div>
-              <div class="col-md-5">
-                <div class="progress">
-                  <div class="progress-bar" style="width: 60%;"></div>
-                </div>
-                <div class="progress">
-                  <div class="progress-bar" style="width: 50%;"></div>
-                </div>
-                <div class="progress">
-                  <div class="progress-bar" style="width: 40%;"></div>
-                </div>
-                <div class="progress">
-                  <div class="progress-bar" style="width: 10%;"></div>
-                </div>
-                <div class="progress">
-                  <div class="progress-bar" style="width: 10%;"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-<!--   <div class="span8">
-    <%#= render 'follow_form' if signed_in? %>
-    <%# if @user.microposts.any? %>
-      <h3>Microposts (<%#= @user.microposts.count %>)</h3>
-      <ol class="microposts">
-        <%#= render @microposts %>
-      </ol>
-      <%#= will_paginate @microposts %>
-    <%# end %>
-  </div> -->
-
+      <%# Plot attributes %>
+      <div class="well well-sm">
+        <p><b><%= current_user.name + " | " + current_user.email %> </b></p>
+        <p><b>Attributes your colleagues have given to you</b></p>
+        <% graph_all_data(current_user.id) %>  <%# put all of my feedback in @chartkick_data  %>
+        <%= bar_chart @chartkick_data, :height => "250px"%> <%# call chartkick %>
       </div>
 
+      <%# Plot ratings %>
+      <div class="well well-sm">
+        <p><b>Job performance feedback you've received from colleagues </b></p>
+        <% graph_all_rating_data(current_user.id) %>  <%# put all of my feedback in @chartkick_data  %>
+        <%= bar_chart @all_rating_data, :height => "250px"%> <%# call chartkick %>
+      </div>
+    </div>
+  </div>
 </div>

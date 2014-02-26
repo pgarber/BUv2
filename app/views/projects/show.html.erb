@@ -11,7 +11,7 @@
       <!-- this is the main section -->
       <div class="well well-sm">
         <% project = Project.find_by(id: params[:id]) %>  
-        <p><b><%= project.name + " | " + Company.find_by(id: project.domain_id).name %> </b></p>
+        <p><b><%= project.name + " | " + Company.find_by(id: project.company_id).name %> </b></p>
 
         <%# put these two back in once we have ProjectRating table %>
         <%# graph_project_data(project.id) %>  <%# get all the attributes for this project and load into @show_project_attributes %>

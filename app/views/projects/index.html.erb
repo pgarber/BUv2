@@ -2,11 +2,29 @@
 <% provide(:title, 'All projects') %>
 <% company_id = CompanyEmployee.find_by(user_id: (current_user.id)).company_id %>
 <h1><%= Company.find_by(id: company_id).name %> | All Projects</h1>
+<%# or current_user.company.name %>
 
 <%= will_paginate %> 
 
 <ul class="projects"> <%# tells it to use the .projects in custom.css.scss%>
 	<%= render @projects %><%# renders _project.html.erb and passes the project%>
 </ul>
+
+<% if @projects.size.to_i < 1 %>
+  <div class="well well-sm"> <b> No projects created for your company yet. </b></div>
+<% end %> 
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@project) do |f| %>
+      <%#= render 'shared/error_messages', object: f.object %>
+      <h4>Create a new project.  Enter project name:</h4>
+      <%= f.text_field :name %>
+      Use the official project name.  Do not editorialize or feedback will be biased.
+      <%= f.hidden_field :company_id, :value => CompanyEmployee.find_by(user_id: (current_user.id)).company_id %>
+      <%= f.submit "Create the project", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>
 
 <%= will_paginate %> 

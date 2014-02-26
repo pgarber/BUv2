@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140222195953) do
+ActiveRecord::Schema.define(version: 20140226161108) do
 
   create_table "attributes", force: true do |t|
     t.string   "attribute_name"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20140222195953) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.float    "rating_given"
+    t.datetime "accounted_for"
   end
 
   add_index "feedbacks", ["from_id", "to_id"], name: "index_feedbacks_on_from_id_and_to_id"
@@ -84,12 +85,12 @@ ActiveRecord::Schema.define(version: 20140222195953) do
 
   create_table "projects", force: true do |t|
     t.string   "name"
-    t.integer  "domain_id"
+    t.integer  "company_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "projects", ["domain_id"], name: "index_projects_on_domain_id"
+  add_index "projects", ["company_id"], name: "index_projects_on_company_id"
 
   create_table "ratings", force: true do |t|
     t.integer  "user_id"
@@ -97,6 +98,7 @@ ActiveRecord::Schema.define(version: 20140222195953) do
     t.float    "current_rating"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "num_fb_received"
   end
 
   add_index "ratings", ["user_id"], name: "index_ratings_on_user_id"

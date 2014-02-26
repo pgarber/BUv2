@@ -1,7 +1,10 @@
 class ProjectsController < ApplicationController
 
   def index
-    @projects = Project.paginate(page: params[:page])
+    #    @users = current_user.company.users.paginate(page: params[:page])  
+
+    @projects = current_user.company.projects.paginate(page: params[:page])
+    @project = Project.new   # need this for creating new on index page
   end
 
   def show
@@ -14,9 +17,10 @@ class ProjectsController < ApplicationController
   end
 
   def create
-  	companies = Company.all
-
-  	domain_id = CompanyEmployee.find_by(user_id: (current_user.id))
+    # do I need the next 2 lines?
+  	# companies = Company.all
+  	# domain_id = CompanyEmployee.find_by(user_id: (current_user.id))  # would now be company_id
+    
     @project = Project.new(project_params)
     if @project.save
       flash[:success] = "Project / Strategy / Effort created succesfully!  You and your colleagues can now weigh in"
@@ -29,7 +33,7 @@ class ProjectsController < ApplicationController
   private
 
     def project_params
-      params.require(:project).permit(:name, :domain_id)
+      params.require(:project).permit(:name, :company_id)
     end
 
 end

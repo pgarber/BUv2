@@ -93,8 +93,8 @@ end
 def make_projects
   companies = Company.all
   company_id = companies.first.id 
-  Project.create!(name: "Factory cost reduction", domain_id: company_id)
-  Project.create!(name: "Competitor acquisition", domain_id: company_id)
+  Project.create!(name: "Factory cost reduction", company_id: company_id)
+  Project.create!(name: "Competitor acquisition", company_id: company_id)
 end
 
 # project_attributes is in seeds.rb
