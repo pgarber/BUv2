@@ -219,4 +219,9 @@ origin	git@github.com:pgarber/BUv2.git (fetch)
 origin	git@github.com:pgarber/BUv2.git (push)
 $ git push heroku master
 a non-stylized landing page shows up at https://polar-badlands-2176.herokuapp.com/
+set config.assets.compile = true  # no change
+
+I will need 
+$ heroku run rake db:version
+$ heroku run rake --trace db:migrate VERSION=<...>
   	
