@@ -12,7 +12,11 @@
         <% user = User.find_by(id: params[:id]) %>  
         <p><b><%= user.name + " | " + user.email %> </b></p>
         <% graph_data(user.id) %>  <%# get the top 5 attributes for this user and set them in @show_attributes %>
-        <%= bar_chart @show_attributes, :height => "200px"%> <%# call chartkick %>
+        <% if @show_attributes.any? %>
+          <%= bar_chart @show_attributes, :height => "200px"%> <%# call chartkick %>
+        <% else %>
+          <%= user.name + " has not yet received any attribute feedback" %>
+        <% end %>  
       </div>
 
       <div class="well well-sm">

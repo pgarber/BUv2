@@ -16,13 +16,22 @@
         <%# put these two back in once we have ProjectRating table %>
         <%# graph_project_data(project.id) %>  <%# get all the attributes for this project and load into @show_project_attributes %>
         <%#= bar_chart @show_project_attributes, :height => "250px"%> <%# call chartkick %>
-        Strategy
+        <b>Strategy</b>
         <% histogram_project_data(project.id, "1") %> <%# set @proj_hist_data for first attrib%>  
-        <%= column_chart @proj_hist_data, :height => "250px" %> <%# chartkick pseudo-histogram %>
+        <% if @proj_hist_has_data > 0 %>
+          <%= column_chart @proj_hist_data, :height => "250px" %> <%# chartkick pseudo-histogram %>        
+        <% else %>
+          <br><%= project.name + " has not yet received any feedback" %><br><p></p>
+        <% end %>  
 
-        Execution
+        <b>Execution</b>
         <% histogram_project_data(project.id, "2") %> <%# set @proj_hist_data for second attrib%>  
-        <%= column_chart @proj_hist_data, :height => "250px" %> <%# chartkick pseudo-histogram %>
+        <% if @proj_hist_has_data > 0 %>
+          <%= column_chart @proj_hist_data, :height => "250px" %> <%# chartkick pseudo-histogram %>
+        <% else %>
+          <br>
+          <%= project.name + " has not yet received any  feedback" %>
+        <% end %>  
       </div>
 
 

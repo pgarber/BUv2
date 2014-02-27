@@ -25,9 +25,14 @@
               <% project = Project.find_by(id: project_id) %>  
               <p><b><%= project.name %> </b></p>
                 <% graph_project_data(project_id) %>  
-                <%= bar_chart @all_rating_data, :height => "200px"%> <%# call chartkick %>
+                <% if @all_rating_data.any? %>
+                  <%= bar_chart @all_rating_data, :height => "200px"%> <%# call chartkick %>
+                <% else %>
+                  <b> No projects with ratings yet. Give input to your <%= link_to "Projects", projects_path %> </b>
+                <% end %>  
             </div>
           <% end %>
+          <%# ##### below code isn't working, I believe %>
           <% if @show_project_id.size.to_i < 1 %>
             <div class="well well-sm"> <b> No projects with ratings yet. Give input to your <%= link_to "Projects", projects_path %> </b>
             </div>
@@ -42,8 +47,12 @@
             <div class="well well-sm">
               <% user = User.find_by(id: user_id) %>  
               <p><b><%= user.name + " | " + user.email %> </b></p>
-                <% graph_data(user_id) %>  <%# get the top 5 attributes for this user and set them in @show_attributes %>
+              <% graph_data(user_id) %>  <%# get the top 5 attributes for this user and set them in @show_attributes %>
+              <% if @show_attributes.any? %>
                 <%= bar_chart @show_attributes, :height => "200px"%> <%# call chartkick %>
+              <% else %>
+                <b> No colleagues with ratings yet. Give input to your <%= link_to "Colleagues", users_path %> </b>
+              <% end %>                 
             </div>
           <% end %>
           <% if @show_user_id.size.to_i < 1 %>
