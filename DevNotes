@@ -220,8 +220,15 @@ origin	git@github.com:pgarber/BUv2.git (push)
 $ git push heroku master
 a non-stylized landing page shows up at https://polar-badlands-2176.herokuapp.com/
 set config.assets.compile = true  # no change
+$ rake assets:precompile   # then push to heroku.  this worked!
 
 I will need 
 $ heroku run rake db:version
-$ heroku run rake --trace db:migrate VERSION=<...>
+$ heroku run rake db:schema:load
+$ heroku run rake db:populate
+$ heroku run rake db:seed
+$ heroku run rake db:crunch_ratings
+
+Still can't create a user or sign in. - I had forgotten to db:seed.  Now, I can create a user. - it seems to be working 
+$ heroku logs
   	
