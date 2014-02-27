@@ -210,4 +210,13 @@ a company has_many projects
 a project_rating belongs_to a project
 a project has_many project_ratings
 a company has_many project_ratings through project - no, I don't think it does.  company_id is in project but project_rating's id is not
+
+Try Heroku:
+$ git remote -v
+heroku	git@heroku.com:polar-badlands-2176.git (fetch)
+heroku	git@heroku.com:polar-badlands-2176.git (push)
+origin	git@github.com:pgarber/BUv2.git (fetch)
+origin	git@github.com:pgarber/BUv2.git (push)
+$ git push heroku master
+a non-stylized landing page shows up at https://polar-badlands-2176.herokuapp.com/
   	
