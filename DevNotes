@@ -1,3 +1,6 @@
+
+source /Users/philgarber/.rvm/scripts/rvm
+
 views from divshot:
 homepage.html went into users/_homepage.html.erb
 myfeedback went into users/show.html.erb - now put it in users/myfeedback
