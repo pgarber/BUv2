@@ -1,140 +1,587 @@
-<!doctype html>
 
-<html>
-  
+<!DOCTYPE html>
+<html lang="en">
   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-    <!-- <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"> -->
+    <!-- <title>OVERTURE - WebDesignCrowd</title> -->
 
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="fonts/font-awesome/css/font-awesome.min.css">
+    
+
+    <!-- Montserrat Sans -->
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400, 700' rel='stylesheet' type='text/css'>        
+    <!-- Oxygen Sans -->
+    <link href='http://fonts.googleapis.com/css?family=Oxygen:300, 600' rel='stylesheet' type='text/css'>    
+    
+    <!-- Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
 
   </head>
-  
-  <body>
 
-
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="media">
-            <a class="pull-left" href="#"></a>
-            <div class="media-body">
+  <body class="blue">
+    
+    <div class="bg">
+      <div id="carousel" class="carousel slide">
         
-              <!-- <p></p> -->
-              <!--EndFragment-->
-              <well>
-                <form>
+        <div class="carousel-inner">
+          <div class="active item">
+            <img src="img/Man_on_mountain.jpg">      
+          </div>
+          <div class="item">
+            <img src="img/underwater.jpg">      
+          </div>
+          <div class="item">
+            <img src="img/Bangkok.jpg">      
+          </div>
+        </div>
+        <div class="gradient"></div>
 
-                  
-                  <!-- <div class="row"> -->
-                    <div class="col-md-5">
-                      <img src="http://i.imgur.com/0Pua12E.png" width="250">
-                      <h3 class="media-heading">Transparency made easy</h3>
-                    </div>
-                    <div class="col-md-7">
-                      <label class="control-label">Join your company's feedback network anonymously and for free</label>
-                      <div class="form-group">
-                        <div class="well well-sm">
+      </div>
+    </div>
+   
+   
+    <div id="navbar" data-spy="affix" data-offset-top="20" class="navbar navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html"><span class="icon-spinner"></span>&nbsp;&nbsp;BumptUp</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">ARROWS<i class="icon-caret-down"></i></a>
+              <ul class="dropdown-menu">
+                <li><a href="index.html">Comment</a></li>
+                <li><a href="index-blue-centered.html">Centered</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">COLORS<i class="icon-caret-down"></i></a>
+              <ul class="dropdown-menu">
+                <li><a href="index.html">Blue</a></li>
+                <li><a href="index-green.html">Green</a></li>
+                <li><a href="index-red.html">Red</a></li>
+              </ul>
+            </li>
+            <li><a href="contact-blue.html">CONTACT</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>    
+    <!-- All Page Modals -->      
+    <div class="modals">
+      <div class="modal fade" id="contact-form" tabindex="-1" role="dialog">
+        <div class="wrapper">
 
-                          <p>Only employees with a verified company email can join your company's network</p>
-                          <%= link_to "Sign up", signup_path, class: "btn btn-large btn-success" %>                          
-                        </div>
-                      </div>
-                    </div>
-                  <!-- </div> -->
-                </form>
-              </well>
-            </div>
-            <section><%# this is where it falls off the edge %>
-            <div class = "col-md-12">
-              <div class="well well-sm">
-                <div class="row">
-                  <div class="col-md-3">
+          <div class="container text-center">
+            <a class="close" data-dismiss="modal" href=""><i class="icon-remove"></i></a>            
+            <h1 class="text-center">Contact Us</h1>
 
-                    <h3><b>Beth</b></h3>
-                    <p></p>
-                    <p>GE Capital</p>
-                    <p>Customer relations</p>
-                    <p></p>
+            <form role="form">
+              <div class="form-group">
+                <label for="exampleInputName"><i class="icon-tag"></i></label>
+                <input type="text" class="form-control" id="exampleInputName" placeholder="Full Name" required>
+                <div class="clearfix"></div>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1"><i class="icon-inbox"></i></label>
+                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" required>
+                <div class="clearfix"></div>
+              </div>
+              <div class="form-group textarea">
+                <label for="exampleInputMessage"><i class="icon-pencil"></i></label>
+                <textarea rows="6" class="form-control" id="exampleInputMessage" placeholder="Write Message" required></textarea>
+                <div class="clearfix"></div>
+              </div>
+
+              <button type="submit" class="btn">SEND MESSAGE</button>
+            </form>
+          </div>
+
+        </div><!-- /.content -->      
+      </div><!-- /.modal -->      
+      <div class="modal fade" id="modal1" tabindex="-1" role="dialog">
+        <div class="wrapper">
+          <img data-dismiss="modal" class="img-responsive" src="img/sintel-bedroom.png" alt="">
+          <h2 class="modal-title"><a href="http://sintel.org">Sintel Bedroom</a></h2>
+        </div><!-- /.content -->      
+      </div><!-- /.modal -->
+      <div class="modal fade" id="modal2" tabindex="-1" role="dialog">
+        <div class="wrapper">
+          <img data-dismiss="modal" class="img-responsive" src="img/sintel-snowscape.jpg" alt="">
+          <h2 class="modal-title"><a href="http://sintel.org">Sintel Snowscape</a></h2>
+        </div><!-- /.content -->      
+      </div><!-- /.modal -->
+      <div class="modal fade" id="modal3" tabindex="-1" role="dialog">
+        <div class="wrapper">
+          <img data-dismiss="modal" class="img-responsive" src="img/sintel-wallpaper-ishtar.jpg" alt="">
+          <h2 class="modal-title"><a href="http://sintel.org">Sintel Wallpaper Ishtar</a></h2>
+        </div><!-- /.content -->      
+      </div><!-- /.modal -->
+      <div class="modal fade" id="modal4" tabindex="-1" role="dialog">
+        <div class="wrapper">
+          <img data-dismiss="modal" class="img-responsive" src="img/sintel-tree.jpg" alt="">
+          <h2 class="modal-title"><a href="http://sintel.org">Sintel Tree</a></h2>
+        </div><!-- /.content -->      
+      </div><!-- /.modal -->
+      <div class="modal fade" id="modal5" tabindex="-1" role="dialog">
+        <div class="wrapper">
+          <img data-dismiss="modal" class="img-responsive" src="img/ishtar-alley.png" alt="">
+          <h2 class="modal-title"><a href="http://sintel.org">Ishtar Alley</a></h2>
+        </div><!-- /.content -->      
+      </div><!-- /.modal -->
+      <div class="modal fade" id="modal6" tabindex="-1" role="dialog">
+        <div class="wrapper">
+          <img data-dismiss="modal" class="img-responsive" src="img/sintel-town-concept.jpg" alt="">
+          <h2 class="modal-title"><a href="http://sintel.org">Sintel Town Concept</a></h2>
+        </div><!-- /.content -->      
+      </div><!-- /.modal -->
+    </div><!-- /.modals -->
+    
+    
+    <!-- Home Section -->
+    <div id="home" class="section clear">   
+      <div class="wrapper">
+        <div class="row">
+          <div class="col-md-2 col-sm-2 col-xs-12 empty"></div>
+          <div class="col-md-8 col-sm-8 col-xs-12">
+            <h1 class="welcome">BumptUp lets you bring transparency to your company. </h1>    
+          </div>
+          <div class="col-md-2 col-sm-2 col-xs-12 empty"></div>
+        </div>
+        <div class="container">
+          <table class="nav-tabs" cellspacing="0">
+            <tr>
+              <td><a class="active" href="#landing_tab" data-toggle="tab">HOME</a></td>
+              <td><a href="#product_tab" data-toggle="tab">COLLEAGUES</a></td>
+              <td><a href="#team_tab" data-toggle="tab">PROJECTS</a></td>
+              <td><a href="#pricing_tab" data-toggle="tab">IDEAS</a></td>
+            </tr>
+          </table>
+
+          <!-- Tab panes -->
+        </div>        
+      </div>
+    </div><!-- /.container -->
+    <div class="tab-content">
+      <div class="tab-pane active slide-left in" id="landing_tab">
+        <!-- Services Section -->
+        <div id="services" class="section clear">
+          <!-- No arrow down in the first section -->
+          <div class="container">
+
+            <div class="content">
+              <div class="text-center">
+                <h2 class="title"><span class="icon-gear"></span>SERVICES</h2>            
+              </div>
+              <div class="row">
+                <div class="col-md-2 col-sm-2 col-xs-12"></div>
+                <div class="col-md-8 col-sm-8 col-xs-12">
+                  <p class="description">We offer services that range from Website Design to Branding. Just check out all of our services below to get a general idea of what we are capable of. We have three people on our team and we will try to accommodate your request.
+                    </p>
+                </div>
+                <div class="col-md-2 col-sm-2 col-xs-12"></div>
+              </div>
+
+            </div><!-- /.content -->
+          </div>
+        </div>
+        <!-- Features Section -->
+        <div id="features" class="section">
+          <div class="container gray">
+            <div class="arrow-down"></div>
+            
+            <div class="content">
+              <div class="row single vcontainer">
+                <div class="col-md-6 col-sm-6 col-xs-12 valign">
+                  <div class="wrapper">
+                    <h3>Responsive.</h3>
+                    <p>What does responsive mean? It means that Studio will adapt and conform to any device size and will still look great. Studio is great for those looking to capture a large mobile audience.</p>
+                    <a class="btn" href="#"><span class="icon-resize-full"></span>MORE DETAILS</a>
                   </div>
-                  <div class="col-md-2" align="right">
-                    <p>Ambitious</p>
-                    <p>Leads by example</p>
-                    <p>Reliable</p>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12 valign">
+                  <div class="browser-preview slide-in left">
+                    <img class="browser" src="img/flat-browser.png">
+                    <img class="preview" src="img/studio.jpg">
                   </div>
-                  <div class="col-md-3">
-                    <div class="progress">
-                      <div class="progress-bar" style="width: 80%;"></div>
-                    </div>
-                    <div class="progress">
-                      <div class="progress-bar" style="width: 60%;"></div>
-                    </div>
-                    <div class="progress">
-                      <div class="progress-bar" style="width: 50%;"></div>
+                </div>
+              </div>
+              
+            </div><!-- /.content -->
+          </div>
+          <div class="container">
+            <div class="arrow-down"></div>
+            
+            <div class="content">
+              <div class="row single">
+                <div class="col-md-6 col-sm-6 col-xs-12 valign pull-right">
+                  <h3>Customizable.</h3>
+                  <p>Each section is clearly defined in Studio meaning you can easily mix and match to create your perfect website.</p>
+                  <a class="btn" href="#"><span class="icon-gear"></span>MORE DETAILS</a>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12 valign pull-right">
+                  <div class="browser-preview slide-in right">
+                    <img class="browser" src="img/flat-browser.png">
+                    <img class="preview" src="img/studio.jpg">
+                    <div class="clearfix"></div>
+                  </div>
+                </div>
+              </div>
+              
+            </div><!-- /.content -->
+          </div>
+        </div>
+
+      </div>
+      <div class="tab-pane" id="product_tab">
+        <!-- Services Section -->
+        <div id="services" class="section clear">
+          <!-- No arrow down in the first section -->
+          <div class="container">
+
+            <div class="content">
+              <div class="text-center">
+                <h2 class="title"><span class="icon-suitcase"></span>PRODUCTS</h2>            
+              </div>
+              <div class="row">
+                <div class="col-md-2 col-sm-2 col-xs-12"></div>
+                <div class="col-md-8 col-sm-8 col-xs-12">
+                  <p class="description">We have created a number of products that range from full scale web apps to simple website designs. Check out all our previous work to get an idea of what we can do!
+                    </p>
+                </div>
+                <div class="col-md-2 col-sm-2 col-xs-12"></div>
+              </div>
+
+            </div><!-- /.content -->
+          </div>
+        </div>
+
+        <!-- Features Section -->
+        <div id="features" class="section">
+          
+          <div class="container gray">
+            <div class="arrow-down"></div>
+            
+            <div class="content">
+              <div class="row single">
+                <div class="col-md-6 col-sm-6 col-xs-12 pull-right">
+                  <h3>Studio.</h3>
+                  <p>Studio is a flexible HTML5 layout which allows you to edit and adjust its sections and structure to your needs. It's Perfect for Small Businesses, Creatives, Digital Agencies, Artists, Illustrators, Photographers or anyone who has awesome work to showcase. Comes with 3 premade Color Schemes.</p>
+                  <a class="btn" href="#"><span class="icon-gear"></span>MORE DETAILS</a>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12 pull-right">
+                  <img class="slide-in right" src="img/studio-iphone.png">
+                </div>
+              </div>
+              
+            </div><!-- /.content -->
+          </div>
+
+          <div class="container">
+            <div class="arrow-down"></div>
+            
+            <div class="content">
+              <div class="row single vcontainer">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <div class="wrapper">
+                    <h3>Bolt.</h3>
+                    <p>Bolt is a modern portfolio theme great for anything from commercial products to creative agencies. This HTML5 / CSS3 single page template is mobile and retina display ready. It is made with concrete sections so you can mix and match to make the perfect website that matches your needs. There are tons of different layouts and web elements to play with.</p>
+                    <a class="btn" href="#?u=webdesigncrowd"><span class="icon-resize-full"></span>MORE DETAILS</a>
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <img class="slide-in left" src="img/bolt-iphone.png">
+                </div>
+              </div>
+              
+            </div><!-- /.content -->
+          </div>
+        </div>
+
+      </div>
+      <div class="tab-pane" id="team_tab">
+        <!-- Services Section -->
+        <div id="services" class="section clear">
+          <!-- No arrow down in the first section -->
+          <div class="container single">
+
+            <div class="content">
+              <div class="text-center">
+                <h2 class="title single"><span class="icon-male"></span><span class="icon-female"></span>MEET THE TEAM</h2>            
+              </div>
+            </div><!-- /.content -->
+          </div>
+        </div>
+
+        <!-- Features Section -->
+        <div id="team" class="section">
+          <div class="container gray">
+            <div class="arrow-down inner-left"></div>
+
+            <div class="content">
+              <div class="row single">
+                <div class="col-md-4 col-sm-6 col-xs-12 pull-right">
+                  <div class="portrait-wrapper">                  
+                    <img class="portrait slide-in" src="img/portrait1.png">
+                  </div>
+                </div>
+                <div class="col-md-8 col-sm-6 col-xs-12 pull-right">
+                  <div class="wrapper">
+                    <h3>Michael Chang</h3>
+                    <p>Hi, I'm Michael Chang. I am a developer who specializes on CSS, HTML and Javascript. I'm excited to work more and learn more about design.</p>
+                    <div class="social-media">
+                      <a href="#" data-toggle="tooltip" title="twitter"><i class="icon-twitter"></i></a>
+                      <a href="#" data-toggle="tooltip" title="facebook"><i class="icon-facebook"></i></a>
+                      <a href="#" data-toggle="tooltip" title="linkedin"><i class="icon-linkedin"></i></a>
+                      <a href="#" data-toggle="tooltip" title="github"><i class="icon-github"></i></a>
+                      <a href="#" data-toggle="tooltip" title="pinterest"><i class="icon-pinterest"></i></a>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            </section>
-            <section>
-            <div class = "col-md-12">
-              <div class="well well-sm">
-                <div class="row">
-                  <div class="col-md-3">
-                    <p><b></b></p>
-                    <h3><b>Bill</b></h3>
-                    <p></p>
-                    <p>Deloitte</p>
-                    <p>Analyst</p>
-                    <p></p>
+              
+            </div><!-- /.content -->
+          </div>
+          <div class="container">
+            <div class="arrow-down inner-right"></div>
+
+            <div class="content">
+              <div class="row single">
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                  <div class="portrait-wrapper">                  
+                    <img class="portrait slide-in" src="img/portrait2.png">
                   </div>
-                  <div class="col-md-2" align="right">
-                    <p>Above and beyond</p>
-                    <p>Finds a way to win</p>
-                    <p>Leadership</p>
-                  </div>
-                  <div class="col-md-3">
-                    <div class="progress">
-                      <div class="progress-bar" style="width: 90%;"></div>
-                    </div>
-                    <div class="progress">
-                      <div class="progress-bar" style="width: 50%;"></div>
-                    </div>
-                    <div class="progress">
-                      <div class="progress-bar" style="width: 30%;"></div>
+                </div>
+                <div class="col-md-8 col-sm-6 col-xs-12">
+                  <div class="wrapper">
+                    <h3>Jane Doe</h3>
+                    <p>I am Jane Doe, a web designer who loves designing and building websites. I founded this company to help bring web design to those who need it.</p>
+                    <div class="social-media">
+                      <a href="#" data-toggle="tooltip" title="twitter"><i class="icon-twitter"></i></a>
+                      <a href="#" data-toggle="tooltip" title="facebook"><i class="icon-facebook"></i></a>
+                      <a href="#" data-toggle="tooltip" title="linkedin"><i class="icon-linkedin"></i></a>
+                      <a href="#" data-toggle="tooltip" title="github"><i class="icon-github"></i></a>
+                      <a href="#" data-toggle="tooltip" title="pinterest"><i class="icon-pinterest"></i></a>
                     </div>
                   </div>
                 </div>
               </div>
-            </section>
+              
+            </div><!-- /.content -->
+          </div>
+        </div>
+        <!-- Work -->
+        <div id="work" class="section">
+          <div class="container gray last">        
+            <div class="arrow-down inner-left"></div>
+            
+            <div class="text-center">
+              <h2 class="title"><span class="icon-desktop"></span>OFFICE</h2>            
+            </div>
+            <div class="row">
+              <div class="col-md-2 col-sm-2 col-xs-12"></div>
+              <div class="col-md-8 col-sm-8 col-xs-12">
+                <p class="description">We offer services that range from Website Design to Branding. Just check out all of our services below to get a general idea of what we are capable of. We have three people on our team and we will try to accommodate your request.</p><br />
+              </div>
+              <div class="col-md-2 col-sm-2 col-xs-12"></div>
+            </div>
+
+            <div class="gallery row">
+              <ul>
+                <li class="col-md-4 col-sm-4 col-xs-12 mix category_1" data-cat="1">
+                  <a data-toggle="modal" href="#modal1" class="mix-cover">
+                    <img class="horizontal" src="img/sintel-bedroom.png" alt="sintel bedroom">
+                    <span class="overlay"><span class="valign"></span><i class="icon-search"></i></span>
+                  </a>
+                </li>
+                <li class="col-md-4 col-sm-4 col-xs-12 mix category_1" data-cat="1">
+                  <a data-toggle="modal" href="#modal2" class="mix-cover">
+                    <img class="horizontal" src="img/sintel-snowscape.jpg" alt="sintel snowscape">
+                    <span class="overlay"><span class="valign"></span><i class="icon-search"></i></span>
+                  </a>
+                </li>
+                <li class="col-md-4 col-sm-4 col-xs-12 mix category_2" data-cat="3">
+                  <a data-toggle="modal" href="#modal5" class="mix-cover">
+                    <img class="horizontal" src="img/ishtar-alley.png" alt="ishtar alley">
+                    <span class="overlay"><span class="valign"></span><i class="icon-search"></i></span>
+                  </a>  
+                </li>
+                <li class="col-md-4 col-sm-4 col-xs-12 mix category_2" data-cat="2">
+                  <a data-toggle="modal" href="#modal4" class="mix-cover">
+                    <img class="horizontal" src="img/sintel-tree.jpg" alt="sintel tree">
+                    <span class="overlay"><span class="valign"></span><i class="icon-search"></i></span>
+                  </a>
+                </li>
+                <li class="col-md-4 col-sm-4 col-xs-12 mix category_3" data-cat="3">
+                  <a data-toggle="modal" href="#modal3" class="mix-cover">
+                    <img class="horizontal" src="img/sintel-wallpaper-ishtar.jpg" alt="ishtar wallpaper">
+                    <span class="overlay"><span class="valign"></span><i class="icon-search"></i></span>
+                  </a>
+                </li>
+                <li class="col-md-4 col-sm-4 col-xs-12 mix category_4" data-cat="3">
+                  <a data-toggle="modal" href="#modal6" class="mix-cover">
+                    <img class="horizontal" src="img/sintel-town-concept.jpg" alt="sintel town concept">
+                    <span class="overlay"><span class="valign"></span><i class="icon-search"></i></span>
+                  </a>
+                </li>          
+              </ul>
+            </div><!-- GALLERY -->
+          </div><!-- /.container --> 
+        </div>   
+
+      </div>
+      <div class="tab-pane" id="pricing_tab">
+        <!-- Pricing Section -->
+        <div id="pricing" class="section clear">
+          <div class="container">
+            <div class="text-center">
+              <h2 class="title"><span class="icon-dollar"></span>PRICING</h2>            
+            </div>        
+            <div class="content">          
+              <div class="pricing">
+                <div class="row">
+                  <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="wrapper">
+                      <h3 class="text-center"><i class="icon-circle-blank"></i>BASIC</h3>
+                      <table class="table">
+                        <thead>
+                          <tr><th><span class="price">9</span></th></tr>
+                        </thead>
+                        <tbody>
+                          <tr><td>One Time Installation</td></tr>
+                          <tr><td>No reselling </td></tr>
+                          <tr><td>Free Email Support</td></tr>  
+                          <tr><td><a class="btn" href="#">PURCHASE NOW</a></td></tr>  
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="wrapper">
+                      <h3 class="text-center"><i class="icon-star"></i>PREMIUM</h3>
+                      <table class="table">
+                        <thead>
+                          <tr><th><span class="price">35</span></th></tr>
+                        </thead>
+                        <tbody>
+                          <tr><td>Multiple Installations</td></tr>
+                          <tr><td>No reselling </td></tr>
+                          <tr><td>Free Email Support</td></tr>  
+                          <tr><td><a class="btn" href="#">PURCHASE NOW</a></td></tr>  
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="wrapper">                
+                      <h3 class="text-center"><i class="icon-trophy"></i>PRO</h3>
+                      <table class="table">
+                        <thead>
+                          <tr><th><span class="price">99</span></th></tr>
+                        </thead>
+                        <tbody>
+                          <tr><td>Multiple Installations</td></tr>
+                          <tr><td>Allowed to use and resell</td></tr>  
+                          <tr><td>Free Email Support</td></tr>  
+                          <tr><td><a class="btn" href="#">PURCHASE NOW</a></td></tr>  
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div><!-- /.container -->
+
+      </div>
+
+      <div class="section">
+        <div class="container subscribe">
+          <div class="content">
+            <div class="row">
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <h2>Give it a try. <br>You're Peter Gibbons.  <br>You work at Initech.</h2>
+              </div>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <img src="img/peter_gibbons.jpg" height="140" align="middle">      
+              </div>
             </div>
           </div>
         </div>
-        <%# for some reason, the link below needs to be there to get the link up above to work !?!? %>
-        <%= link_to "Sign up", signup_path, class: "btn btn-large btn-success" %>
-        <div class="col-lg-4">
-          <h2>How BumptUp works</h2>
-          <p>BumptUp verifies that you are an employee of your company through your work email address. After that, you can give your company the feedback it needs about its direction and its employees. All of your actions on BumptUp are private. No one else even knows you use the system if you don't let them know.</p>
-          <p><a class="btn btn-default" href="#">More &raquo;</a></p>
-        </div>
-        <div class="col-lg-4">
-          <h2>How BumptUp helps</h2>
-          <p>Your company needs real, honest, real time feedback from the people who know best: you and your coworkers. While it's easy enough to give praise, it is more difficult to give constructive feedback about what needs to improve. Yet, constructive feedback is what helps your company the most and what your coworkers yearn for. BumptUp tears down the barriers to providing this feedback with a system that allows the feedback to come from anonymized sources within the organization.</p>
-          <p><a class="btn btn-default" href="#">More &raquo;</a></p>
-        </div>
-        <div class="col-lg-4">
-          <h2>How BumptUp is better</h2>
-          <p>"<span style="font-family: Helvetica, Arial, sans-serif; font-size: 15px;">Most employee engagement or satisfaction surveys are a stupendous waste of money and time. Everyone in the organization dreads them and little or nothing ever happens to the feedback." - Bernard Marr</span></p>
-          <p>BumptUp is <b><i>pushed</i></b> by employees rather than <b><i>pulled</i></b> by HR or senior management. &nbsp;It is quick, safe, and gets honest feedback.</p>
-          <p><a class="btn btn-default" href="#">More &raquo;</a></p>
-        </div>
       </div>
-      <hr>
-      <footer>
-        <p>&copy; BumptUp 2014</p>
-      </footer>
     </div>
-    <!-- /container -->
-  </body>
+    <div class="section bottom clear">
+      <div class="container clear">
+        <div class="arrow-down"></div>
+      </div>
+    </div>
 
+    
+    <div id="footer" class="section">
+      <div class="container">        
+        <div class="row">
+          <div class="col-md-5 col-sm-5 col-xs-12">
+            <a class="logo clearfix" href="#">OVERTURE</a><br />
+            <p class="pull-left clearfix tagline">Tagline.</p>
+            <div class="clearfix"></div>
+            <p>BumptUp is your company's communciation and feedback network by and for your colleagues.</p>
+          </div>
+          <div class="col-md-1 col-sm-1 col-xs-0 empty"></div>
+          <div class="col-md-3 col-sm-3 col-xs-6">
+            <h3>Contact</h3>
+            <ul>
+              <li><a href="http://twitter.com/webdesigncrowd">Twitter</a></li>
+              <li><a href="#">Facebook</a></li>
+              <li><a href="#">LinkedIn</a></li>
+            </ul>
+          </div>
+          <div class="col-md-3 col-sm-3 col-xs-6">
+            <h3>Themes</h3>
+            <ul>
+              <li><a href="#">Studio</a></li>
+              <li><a href="#">Origami</a></li>
+              <li><a href="#">Bolt</a></li>
+              <li><a href="#">Streamline</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <hr />
+            <p class="text-center">Made by <a href="http://webdesigncrowd.com">WebDesignCrowd</a></p>   
+          </div>
+        </div>
+      </div>  
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/jquery.mixitup.min.js"></script>
+    <script src="js/masonry.pkgd.min.js"></script>
+    <script src="js/imagesloaded.pkgd.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/init.js"></script>
+  </body>
 </html>
+
+

@@ -235,3 +235,10 @@ $ heroku run rake db:crunch_ratings
 Still can't create a user or sign in. - I had forgotten to db:seed.  Now, I can create a user. - it seems to be working 
 $ heroku logs
   	
+
+3/8/15: put Overture theme from wrap bootstrap on.  In branch "overture"
+put style.css in assets/stylesheets
+put javascripts /assets
+put /img in public/
+copied contents of index.html into _landing
+
