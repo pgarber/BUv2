@@ -235,3 +235,9 @@ $ heroku run rake db:crunch_ratings
 Still can't create a user or sign in. - I had forgotten to db:seed.  Now, I can create a user. - it seems to be working 
 $ heroku logs
   	
+I didn't like the Overture theme - too busy with big changing photo.  Try Mist theme  	
+- Put Css in app/stylesheets - animate, color-styles, custom, ui-elements.css
+- put JS in app/javascripts - custom.js, scrolltopcontrol.js
+- put images in public/
+- delete custom.css.scss - that makes most things in the layout work
+I took everything out of layouts/_header.html.erb.  But it might be better if I took the header out of _landing and put it in there
