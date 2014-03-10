@@ -16,7 +16,7 @@
       <% flash.each do |key, value| %>
         <%= content_tag(:div, value, class: "alert alert-#{key}") %>
       <% end %>
-      <%= yield %> <!-- yields home.html.erb -->
+      <%= yield %> <!-- yields users/home.html.erb which chooses either landing or homepage -->
       <%= debug(params) if Rails.env.development? %>
       <%= render 'layouts/footer' %>
 

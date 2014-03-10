@@ -82,7 +82,7 @@ $ rails console
 > ActiveRecord::Base.connection.execute("DELETE from sqlite_sequence where name = 'attributes'")
 $ rake db:seed
 
-changed to Simplex theme by Bootswatch by replacing custom.css.scss contents with that of bootstrap.css from bootswatch.com Simplex theme
+changed to Simplex theme by Bootswatch by replacing custom.css.scss contents with that of bootstrap.css from bootswatch.com Simplex theme.  but now, it seems it's in bootswatch_simplex
 
 Got sliders working, merged back to main.  John is helping with unit tests
 
@@ -240,4 +240,4 @@ I didn't like the Overture theme - too busy with big changing photo.  Try Mist t
 - put JS in app/javascripts - custom.js, scrolltopcontrol.js
 - put images in public/
 - delete custom.css.scss - that makes most things in the layout work
-I took everything out of layouts/_header.html.erb.  But it might be better if I took the header out of _landing and put it in there
+I took everything out of layouts/_header.html.erb.  But it might be better if I took the header out of _landing and put it in there - done.
