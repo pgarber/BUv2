@@ -2,131 +2,131 @@
 
 <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %> <%# need this on any page that has a chart %>
 
-<br>
-<div class="container">
-  <div class="row">
-    <%= render "users/signed_in_sidebar" %>
-    <div class="col-md-7">
-      <!-- this is the main section -->
-      <div class="well well-sm">
-        <% user = User.find_by(id: params[:id]) %>  
-        <p><b><%= user.name + " | " + user.email %> </b></p>
-        <% graph_data(user.id) %>  <%# get the top 5 attributes for this user and set them in @show_attributes %>
-        <% if @show_attributes.any? %>
-          <%= bar_chart @show_attributes, :height => "200px"%> <%# call chartkick %>
-        <% else %>
-          <%= user.name + " has not yet received any attribute feedback" %>
-        <% end %>  
-      </div>
+<div class="wrapper body">
+  <div class="container">
+    <div class="row">
+      <%= render "users/signed_in_sidebar" %>
+      <div class="col-md-7">
+        <!-- this is the main section -->
+        <div class="well well-sm">
+          <% user = User.find_by(id: params[:id]) %>  
+          <p><b><%= user.name + " | " + user.email %> </b></p>
+          <% graph_data(user.id) %>  <%# get the top 5 attributes for this user and set them in @show_attributes %>
+          <% if @show_attributes.any? %>
+            <%= bar_chart @show_attributes, :height => "200px"%> <%# call chartkick %>
+          <% else %>
+            <%= user.name + " has not yet received any attribute feedback" %>
+          <% end %>  
+        </div>
 
-      <div class="well well-sm">
-        <p></p>
-    
-        <h4>Give feedback for <%= @user.name %></h4>
+        <div class="well well-sm">
+          <p></p>
+      
+          <h4>Give feedback for <%= @user.name %></h4>
 
-        <div class="row">
-          <div class="col-md-5" align="left">
-            <p>Let your coworker know how he or she is doing in these five key areas. </p>
-            <p></p>
-            <p>10 is Best</p>
-            <p></p>
-            <p>1 is Worst</p>
-          </div>
-          <div class="col-md-5">
-
-            <%= form_tag("/feedbacks/slider_complete/"+params[:id],  :method => "post", :remote => true) do %> 
-
-              <b>Results:</b> <span id="resultsRange">No Rating</span>
-              <input type="range" min="0" max="10" value="0" step="1" onchange="resultsValue(this.value)" name="resultsScore" />  
-              <br>
-
-              <b>Job Knowledge:</b> <span id="jkRange">No Rating</span>
-              <input type="range" min="0" max="10" value="0" step="1" onchange="jkValue(this.value)" name="jkScore" />  
-              <br>
-
-              <b>Initiative:</b> <span id="initiativeRange">No Rating</span>
-              <input type="range" min="0" max="10" value="0" step="1" onchange="initiativeValue(this.value)" name="initiativeScore" />  
-              <br>
-
-              <b>Communication:</b> <span id="commRange">No Rating</span>
-              <input type="range" min="0" max="10" value="0" step="1" onchange="commValue(this.value)" name="commScore" />          
-              <br>
-
-              <b>Leadership:</b> <span id="leadershipRange">No Rating</span>
-              <input type="range" min="0" max="10" value="0" step="1" onchange="leadershipValue(this.value)" name="leadershipScore" /> 
+          <div class="row">
+            <div class="col-md-5" align="left">
+              <p>Let your coworker know how he or she is doing in these five key areas. </p>
               <p></p>
-
-              <script type="text/javascript">
-
-                 function resultsValue(newValue)
-                 {
-                   document.getElementById("resultsRange").innerHTML=newValue;
-                   if (newValue == 0)
-                    { document.getElementById("resultsRange").innerHTML="No rating" }
-                 }
-                 function jkValue(newValue)
-                 {
-                   document.getElementById("jkRange").innerHTML=newValue;
-                    if (newValue == 0)
-                    { document.getElementById("jkRange").innerHTML="No rating" }
-                 }
-                 function initiativeValue(newValue)
-                 {
-                   document.getElementById("initiativeRange").innerHTML=newValue;
-                   if (newValue == 0)
-                    { document.getElementById("initiativeRange").innerHTML="No rating" }
-                 }
-                 function commValue(newValue)
-                 {
-                   document.getElementById("commRange").innerHTML=newValue;
-                   if (newValue == 0)
-                    { document.getElementById("commRange").innerHTML="No rating" }
-                 }
-                 function leadershipValue(newValue)
-                 {
-                   document.getElementById("leadershipRange").innerHTML=newValue;
-                   if (newValue == 0)
-                    { document.getElementById("leadershipRange").innerHTML="No rating" }
-                 }
-              </script>
-              
+              <p>10 is Best</p>
               <p></p>
-              <%= submit_tag("Submit rating feedback", :class=>"btn btn-success", :onclick => "return validateform(#{@variable});") %>
-            <%end%>  <%# end form tag do %>
+              <p>1 is Worst</p>
+            </div>
+            <div class="col-md-5">
 
-            <% all_attributes = Attribute.all %>
+              <%= form_tag("/feedbacks/slider_complete/"+params[:id],  :method => "post", :remote => true) do %> 
+
+                <b>Results:</b> <span id="resultsRange">No Rating</span>
+                <input type="range" min="0" max="10" value="0" step="1" onchange="resultsValue(this.value)" name="resultsScore" />  
+                <br>
+
+                <b>Job Knowledge:</b> <span id="jkRange">No Rating</span>
+                <input type="range" min="0" max="10" value="0" step="1" onchange="jkValue(this.value)" name="jkScore" />  
+                <br>
+
+                <b>Initiative:</b> <span id="initiativeRange">No Rating</span>
+                <input type="range" min="0" max="10" value="0" step="1" onchange="initiativeValue(this.value)" name="initiativeScore" />  
+                <br>
+
+                <b>Communication:</b> <span id="commRange">No Rating</span>
+                <input type="range" min="0" max="10" value="0" step="1" onchange="commValue(this.value)" name="commScore" />          
+                <br>
+
+                <b>Leadership:</b> <span id="leadershipRange">No Rating</span>
+                <input type="range" min="0" max="10" value="0" step="1" onchange="leadershipValue(this.value)" name="leadershipScore" /> 
+                <p></p>
+
+                <script type="text/javascript">
+
+                   function resultsValue(newValue)
+                   {
+                     document.getElementById("resultsRange").innerHTML=newValue;
+                     if (newValue == 0)
+                      { document.getElementById("resultsRange").innerHTML="No rating" }
+                   }
+                   function jkValue(newValue)
+                   {
+                     document.getElementById("jkRange").innerHTML=newValue;
+                      if (newValue == 0)
+                      { document.getElementById("jkRange").innerHTML="No rating" }
+                   }
+                   function initiativeValue(newValue)
+                   {
+                     document.getElementById("initiativeRange").innerHTML=newValue;
+                     if (newValue == 0)
+                      { document.getElementById("initiativeRange").innerHTML="No rating" }
+                   }
+                   function commValue(newValue)
+                   {
+                     document.getElementById("commRange").innerHTML=newValue;
+                     if (newValue == 0)
+                      { document.getElementById("commRange").innerHTML="No rating" }
+                   }
+                   function leadershipValue(newValue)
+                   {
+                     document.getElementById("leadershipRange").innerHTML=newValue;
+                     if (newValue == 0)
+                      { document.getElementById("leadershipRange").innerHTML="No rating" }
+                   }
+                </script>
+                
+                <p></p>
+                <%= submit_tag("Submit rating feedback", :class=>"btn btn-success", :onclick => "return validateform(#{@variable});") %>
+              <%end%>  <%# end form tag do %>
+
+              <% all_attributes = Attribute.all %>
+            </div>
           </div>
         </div>
+        <div class="well well-sm">
+          <p></p>
+          <h4>Select attributes that apply to <%= @user.name %> </h4>Select as many or as few as you wish to describe  <%=@user.name%>'s job performance
+
+            <%= form_tag("/feedbacks/complete/"+params[:id],  :method => "post", :remote => true) do %> <%# from codelearn.org %>
+            
+              <% all_attributes.each do |attribute| %> 
+                <% if attribute.good == 'true' %>  <%# put good ones in left column %>
+                  <div class="col-md-6" >
+                    <label>
+                      <%= check_box_tag  ("attribute_checkbox[]"),attribute.identifier %><%=  attribute.attribute_name %> 
+                    </label> 
+                  </div>  
+                  <div class="col-md-6">
+                    <label>
+                      <%= check_box_tag  ("attribute_checkbox[]"),attribute.opposite_identifier %>
+                      <%= all_attributes.find_by(identifier: attribute.opposite_identifier).attribute_name %>
+                    </label>
+                  </div>  
+                <% end %>  <%# end if good %>
+
+              <%end%>  <%# end each do %>
+            
+            <%= submit_tag("Submit attribute feedback", :class=>"btn btn-success") %>
+            <%end %>  <%# end form tag do %>
+          
+        </div> 
       </div>
-      <div class="well well-sm">
-        <p></p>
-        <h4>Select attributes that apply to <%= @user.name %> </h4>Select as many or as few as you wish to describe  <%=@user.name%>'s job performance
-
-          <%= form_tag("/feedbacks/complete/"+params[:id],  :method => "post", :remote => true) do %> <%# from codelearn.org %>
-          
-            <% all_attributes.each do |attribute| %> 
-              <% if attribute.good == 'true' %>  <%# put good ones in left column %>
-                <div class="col-md-6" >
-                  <label>
-                    <%= check_box_tag  ("attribute_checkbox[]"),attribute.identifier %><%=  attribute.attribute_name %> 
-                  </label> 
-                </div>  
-                <div class="col-md-6">
-                  <label>
-                    <%= check_box_tag  ("attribute_checkbox[]"),attribute.opposite_identifier %>
-                    <%= all_attributes.find_by(identifier: attribute.opposite_identifier).attribute_name %>
-                  </label>
-                </div>  
-              <% end %>  <%# end if good %>
-
-            <%end%>  <%# end each do %>
-          
-          <%= submit_tag("Submit attribute feedback", :class=>"btn btn-success") %>
-          <%end %>  <%# end form tag do %>
-        
-      </div> 
     </div>
   </div>
 </div>
-
 

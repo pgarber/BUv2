@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+
     <!-- <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"> -->
 
   
@@ -10,16 +11,16 @@
     <%= csrf_meta_tags %>
     <%= render 'layouts/shim' %>
   </head>
-  <body>
+  <body class="body-blue"> <%# don't think adding body-blue did anything %>
     <%= render 'layouts/header' %>
-    <div class="container">
+    <!-- <div class="container"> had to remove this to get full width image on _landing -->
       <% flash.each do |key, value| %>
         <%= content_tag(:div, value, class: "alert alert-#{key}") %>
       <% end %>
       <%= yield %> <!-- yields home.html.erb -->
       <%= debug(params) if Rails.env.development? %>
       <%= render 'layouts/footer' %>
-    </div>
+    <!-- </div> -->
 
   </body>
 </html>
