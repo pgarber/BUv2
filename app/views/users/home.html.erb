@@ -1,7 +1,9 @@
 <%# this one is users/home.html.erb.  Got rid of static_pages/home %>
 
 <% if signed_in? %>
-  <%=render 'users/homepage' %>
+  <div>
+    <%=render 'users/homepage' %>
+  </div>
 <% else %>
   <div>
     <%= render 'static_pages/landing' %>

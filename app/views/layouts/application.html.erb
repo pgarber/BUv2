@@ -10,8 +10,9 @@
     <%= csrf_meta_tags %>
     <%= render 'layouts/shim' %>
   </head>
-  <body>
+  <body class="body-blue">
     <%= render 'layouts/header' %>
+    <div class="container">
 
       <% flash.each do |key, value| %>
         <%= content_tag(:div, value, class: "alert alert-#{key}") %>
@@ -19,7 +20,7 @@
       <%= yield %> <!-- yields users/home.html.erb which chooses either landing or homepage -->
       <%= debug(params) if Rails.env.development? %>
       <%= render 'layouts/footer' %>
-
+    </div>
 
   </body>
 </html>
