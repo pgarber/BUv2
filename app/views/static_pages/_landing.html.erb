@@ -1,140 +1,158 @@
-<!doctype html>
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="img/favicon.png">
 
-<html>
+
+
+<!-- PG: remove this section because they're not being found anyway per the console
+     Bootstrap core CSS 
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+     Custom styles for this template 
+    <link href="css/color-styles.css" rel="stylesheet">
+    <link href="css/ui-elements.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
   
-  <head>
+   Resources 
+  <link href="css/animate.css" rel="stylesheet"> -->
 
-    <!-- <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"> -->
 
 
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
   </head>
-  
-  <body>
 
+  <body class="body-blue">
 
-    <div class="container">
+ <!-- navbar moved to _header.html.erb -->
+
+    <!-- Body -->
+  <div class="wrapper"> <!-- wrapper -->
+    <div class="crp-showcase">
+      <div class="container">
       <div class="row">
-        <div class="col-md-12">
-          <div class="media">
-            <a class="pull-left" href="#"></a>
-            <div class="media-body">
-        
-              <!-- <p></p> -->
-              <!--EndFragment-->
-              <well>
-                <form>
-
-                  
-                  <!-- <div class="row"> -->
-                    <div class="col-md-5">
-                      <img src="http://i.imgur.com/0Pua12E.png" width="250">
-                      <h3 class="media-heading">Transparency made easy</h3>
-                    </div>
-                    <div class="col-md-7">
-                      <label class="control-label">Join your company's feedback network anonymously and for free</label>
-                      <div class="form-group">
-                        <div class="well well-sm">
-
-                          <p>Only employees with a verified company email can join your company's network</p>
-                          <%= link_to "Sign up", signup_path, class: "btn btn-large btn-success" %>                          
-                        </div>
-                      </div>
-                    </div>
-                  <!-- </div> -->
-                </form>
-              </well>
-            </div>
-            <section><%# this is where it falls off the edge %>
-            <div class = "col-md-12">
-              <div class="well well-sm">
-                <div class="row">
-                  <div class="col-md-3">
-
-                    <h3><b>Beth</b></h3>
-                    <p></p>
-                    <p>GE Capital</p>
-                    <p>Customer relations</p>
-                    <p></p>
-                  </div>
-                  <div class="col-md-2" align="right">
-                    <p>Ambitious</p>
-                    <p>Leads by example</p>
-                    <p>Reliable</p>
-                  </div>
-                  <div class="col-md-3">
-                    <div class="progress">
-                      <div class="progress-bar" style="width: 80%;"></div>
-                    </div>
-                    <div class="progress">
-                      <div class="progress-bar" style="width: 60%;"></div>
-                    </div>
-                    <div class="progress">
-                      <div class="progress-bar" style="width: 50%;"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            </section>
-            <section>
-            <div class = "col-md-12">
-              <div class="well well-sm">
-                <div class="row">
-                  <div class="col-md-3">
-                    <p><b></b></p>
-                    <h3><b>Bill</b></h3>
-                    <p></p>
-                    <p>Deloitte</p>
-                    <p>Analyst</p>
-                    <p></p>
-                  </div>
-                  <div class="col-md-2" align="right">
-                    <p>Above and beyond</p>
-                    <p>Finds a way to win</p>
-                    <p>Leadership</p>
-                  </div>
-                  <div class="col-md-3">
-                    <div class="progress">
-                      <div class="progress-bar" style="width: 90%;"></div>
-                    </div>
-                    <div class="progress">
-                      <div class="progress-bar" style="width: 50%;"></div>
-                    </div>
-                    <div class="progress">
-                      <div class="progress-bar" style="width: 30%;"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-            </div>
-          </div>
+        <div class="col-sm-12">
+        <h1 class="text-center animated fadeInDown">BumptUp brings transparency to your company</h1>
+        <h3 class="text-center animated fadeInDown">Sign up with your work email </h3>
+        <div class="text-center actions animated fadeInDown delay2">
+          <%= link_to "Sign up", signup_path, class: "btn btn-color" %>  
+          <!-- <a class="btn btn-color" href="#">Sign Up</a> -->
         </div>
-        <%# for some reason, the link below needs to be there to get the link up above to work !?!? %>
-        <%= link_to "Sign up", signup_path, class: "btn btn-large btn-success" %>
-        <div class="col-lg-4">
-          <h2>How BumptUp works</h2>
-          <p>BumptUp verifies that you are an employee of your company through your work email address. After that, you can give your company the feedback it needs about its direction and its employees. All of your actions on BumptUp are private. No one else even knows you use the system if you don't let them know.</p>
-          <p><a class="btn btn-default" href="#">More &raquo;</a></p>
-        </div>
-        <div class="col-lg-4">
-          <h2>How BumptUp helps</h2>
-          <p>Your company needs real, honest, real time feedback from the people who know best: you and your coworkers. While it's easy enough to give praise, it is more difficult to give constructive feedback about what needs to improve. Yet, constructive feedback is what helps your company the most and what your coworkers yearn for. BumptUp tears down the barriers to providing this feedback with a system that allows the feedback to come from anonymized sources within the organization.</p>
-          <p><a class="btn btn-default" href="#">More &raquo;</a></p>
-        </div>
-        <div class="col-lg-4">
-          <h2>How BumptUp is better</h2>
-          <p>"<span style="font-family: Helvetica, Arial, sans-serif; font-size: 15px;">Most employee engagement or satisfaction surveys are a stupendous waste of money and time. Everyone in the organization dreads them and little or nothing ever happens to the feedback." - Bernard Marr</span></p>
-          <p>BumptUp is <b><i>pushed</i></b> by employees rather than <b><i>pulled</i></b> by HR or senior management. &nbsp;It is quick, safe, and gets honest feedback.</p>
-          <p><a class="btn btn-default" href="#">More &raquo;</a></p>
-        </div>
+        <a href="index-alt.html" class="alt-index hidden-xs">
+          <img src="img/browser.png" alt="..."> <!-- this is the little image below sign up button -->
+        </a>
       </div>
-      <hr>
-      <footer>
-        <p>&copy; BumptUp 2014</p>
-      </footer>
+      </div>
     </div>
-    <!-- /container -->
-  </body>
+    </div>
+    <div class="container">
+      <!-- Features -->
+      <div class="row">
+        <div class="col-sm-4">
+      <div class="crp-ft">
+        <i class="text-color fa fa-users fa-3x"></i> <!-- http://fortawesome.github.io/Font-Awesome/icons/ -->
+        <h4>Colleagues</h4>
+        <p class="text-muted lh">
+          Give feedback which helps your colleagues get recognized or learn what they need to improve on.  If there are issues, management will be alerted.  It's free and your inputs are always anonymous.
+        </p>
+        <a href="#" class="btn btn-color btn-block hidden btn-xxl">Action</a>
+      </div>
+      </div>
+        <div class="col-sm-4">
+      <div class="crp-ft">
+        <i class="text-color fa fa-road fa-3x"></i>
+        <h4>Projects and Strategies</h4>
+        <p class="text-muted lh">
+          BumptUp Projects lets your company know what you and your colleagues think about ongoing projects and corporate strategies.  Help answer the questions of what should receive higher priority, and what needs a different approach.  To allow honest and relevant feedback, your project inputs are always anonymous. 
+        </p>
+        <a href="#" class="btn btn-color btn-block hidden btn-xxl">Action</a>
+      </div>
+      </div>
+        <div class="col-sm-4">
+      <div class="crp-ft">
+        <i class="text-color fa fa-lightbulb-o fa-3x"></i>
+        <h4>Ideas</h4>
+        <p class="text-muted lh">
+          Suggest ideas for your company to increase sales, improve efficiency, or other improvements.  Comment and vote on ideas.  Your name is tied to ideas so that you get credit for great innovations.  It's free, lightweight innovation management.
+        </p>
+        <a href="#" class="btn btn-color btn-block hidden btn-xxl">Action</a>
+      </div>
+      </div>
+    </div>
+      <!-- // Features -->
+      <!-- Description -->
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+        <h2 class="oswald text-center">You can bring transparency to your company.<br>It's free, quick, and anonymous.</h2>
+        <hr class="double-margin">
+      </div>
+    </div>
+    <div class="row crp-desc">
+        <div class="col-sm-5 col-sm-offset-1">
+      <img src="img/macbook.png" alt="..." class="img-responsive">
+      </div>
+      <div class="col-sm-5">
+        <h3 class="text-color text-center-xs">How BumptUp works</h3>
+        <p class="text-muted text-center-xs lh">
+          Establish your account and your company by using your work email address to confirm that you do work for the company.
+          <ul>  
+          <li><b>Colleagues</b>: create an identity for your colleague by entering his or her work email address.  You can then provide them with anonymous feedback by selecting from BumptUp's array of attributes. </li>
+          <li><b>Projects</b>: what are your company's major intitiatives?  Just enter them in and use BumptUp's rating system to let management know what is going well and what needs redesigned.</li>
+          <li><b>Ideas</b>: Everyone has ideas on how to increase revenues or make the company more efficient.  Enter your idea and let your colleagues comment and vote on the best ideas.</li>
+        </p>
+        <p class="text-center-xs"><a href="#" class="btn btn-lg btn-default">Find out more</a></p>
+      </div>
+    </div>
+    <!-- // Desctiption -->
+    
+      <!-- Give it a try -->
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+        <!-- <hr class="double-margin"> -->
+        <h2 class="oswald text-center">Pretend you're Peter Gibbons and work at Initech.<br>Give BumptUp a try, right here:</h2>
+      </div>
+    </div>
+<!--     <div class="row crp-desc">
+        <div class="col-sm-5 col-sm-offset-1">
+      <img src="img/peter_and_bill.jpg" alt="..." class="img-responsive">
+      </div>
+      <div class="col-sm-5">
+        <h3 class="text-color text-center-xs">A picture is worth 1,000 words</h3>
+        <p class="text-muted text-center-xs lh">
+          Below is a sandbox to let you learn about how BumptUp works before setting up your own account.  
+        </p>
+        <p class="text-center-xs"><a href="#" class="btn btn-lg btn-default">This is awesome<br>Sign me up</a></p>
+      </div>
+    </div> -->
+    <!-- // Desctiption -->
+    
 
-</html>
+    <!-- footer moved to _footer.html.erb -->
+
+    
+
+
+
+  
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<!--    <script src="js/bootstrap.min.js"></script>
+    <script src="js/custom.js"></script>
+  <script src="js/scrolltopcontrol.js"></script>
+ -->
+
+</body></html>
