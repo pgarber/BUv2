@@ -1054,7 +1054,7 @@ a.carousel-arrow-next {
 	padding-bottom: 200px;
 	background: url(../img/glass_stairs.jpg) no-repeat center center;
 	background-size: cover;
-	color: #FFF;
+	color: #000;  /*  PG: landing page big text color  */
 	border-bottom: 1px solid #eee;
 	overflow: hidden;
 }
@@ -1086,7 +1086,7 @@ a.carousel-arrow-next {
 	-moz-transition: bottom 0.3s;
 }
 .crp-showcase a.alt-index:hover > img {
-	bottom: -340px;
+	bottom: -380px;
 }
 
 @media (max-width: 767px) {  /* Adjusting for xs devices */

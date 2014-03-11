@@ -235,3 +235,6 @@ $ heroku run rake db:crunch_ratings
 Still can't create a user or sign in. - I had forgotten to db:seed.  Now, I can create a user. - it seems to be working 
 $ heroku logs
   	
+3/11/14 put mist styling on, in branch mist3
+$ git push heroku mist3  / says non-master branch, skipping build.  I guess I can only get my master branch onto heroku
+
