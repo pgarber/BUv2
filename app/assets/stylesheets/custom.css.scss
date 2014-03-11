@@ -1,6 +1,22 @@
+/* ########### not being  accessed at all right now   ###### */
+
 @import "bootstrap";
 
+$gray-darker:            lighten(#000, 13.5%) !default; // #222
+$gray-dark:              lighten(#000, 20%) !default;   // #333
+$gray:                   lighten(#000, 33.5%) !default; // #555
+$gray-light:             lighten(#000, 60%) !default;   // #999
+$gray-lighter:           lighten(#000, 93.5%) !default; // #eee
+
+$grayDarker:             #222;
+$grayDark:               #333;
+$gray:                    #555;
+$grayLight:              #999;
+$grayLighter:            #eee;
+$blue:                  #0101DF;
+
 /* mixins, variables, etc */
+
 
 $grayMediumLight: #eaeaea;
 
@@ -18,7 +34,7 @@ html {
 }
 
 body {
-  padding-top: 60px;  /* PG: move the body down some */
+  padding-top: 160px;  /* PG: move the body down some */
 }
 
 section {
