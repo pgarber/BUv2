@@ -14,7 +14,7 @@ body {
 	padding: 0;
 }
 .body-inverse {
-	background: #ecf0f1;
+	background: #FFF;
 }
 
 /* ===== Sticky Footer Trick ===== */
@@ -37,7 +37,7 @@ body {
 /* ===== Logo ===== */
 
 .navbar-brand {
-	font-family: 'Lobster', cursive;
+	font-family: 'Arial';
 	font-size: 26px;
 }
 .navbar-brand i {
@@ -1047,12 +1047,12 @@ a.carousel-arrow-next {
 /*** Showcase ***/
 
 .crp-showcase {
-	width: 100%;
+	width: 100%;  /* of some div */
 	margin-top: -30px;
 	margin-bottom: 100px;
 	padding-top: 50px;
 	padding-bottom: 200px;
-	background: url(../img/photo.jpg) no-repeat center center;
+	background: url(../img/glass_stairs.jpg) no-repeat center center;
 	background-size: cover;
 	color: #FFF;
 	border-bottom: 1px solid #eee;
