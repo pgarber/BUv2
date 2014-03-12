@@ -816,15 +816,16 @@ pre code {
 
 @media (min-width: 992px) {
   .container {
-    width: 970px;
+    width: 910px;  /* was 970 */
   }
 }
 
-@media (min-width: 1200px) {
+/* PG: remove because I don't like it to go so wide;  */
+/*@media (min-width: 1200px) {
   .container {
     width: 1170px;
   }
-}
+}*/
 
 .row {
   margin-right: -15px;

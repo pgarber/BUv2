@@ -5,7 +5,7 @@
   <div class="container">
     <div class="row">
       <%= render "users/signed_in_sidebar" %>  
-      <div class="col-md-7">
+      <div class="col-md-8">
         <% provide(:title, 'All projects') %>
         <% company_id = CompanyEmployee.find_by(user_id: (current_user.id)).company_id %>
         <h1><%= Company.find_by(id: company_id).name %> | All Projects</h1>
