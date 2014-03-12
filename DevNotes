@@ -244,4 +244,5 @@ $ git push heroku master
 
 3/12/14: 
 I don't like the wide view, so get rid of this section from bootstrap.css: @media (min-width: 1200px) {
-
+Some, but not all, styling comes through on heroku
+local: $ rails s -e production
