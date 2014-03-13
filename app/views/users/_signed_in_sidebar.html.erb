@@ -1,37 +1,29 @@
 
-    <div class="col-md-4">
+<div class="col-md-4">
 
-        <div class="well well-sm">
-          <%# was @user.name, @user.email but that was nil %>
-          <h4><%= current_user.name %>, <%= current_user.email %></h4>
-          <p> <%= link_to "View Detailed Feedback", myfeedback_path(current_user) %> </p> <%# I didn't need to define a myfeedback_path - it just went to users/myfeedback.html.erb %>
-          <%# an example of going to a secure page= link_to "Settings", edit_user_path(current_user) %>
-          <p>+1 Above and beyond</p>
-        </div>
-        <div class="well well-sm">
-          <p>Search Projects or Colleague</p>
-          <input type="text" class="form-control">
-          <p></p>
-          <a class="btn btn-primary btn-sm">Search</a>
-          <br><p></p>
-          <p><%= link_to "Create a colleague not in BumptUp yet", '#' %> <%#createuser_path(current_user) %></p>
-          
-          <p><%= link_to "Create a project / strategy / effort not in BumptUp yet", newproject_path %></p>
-
-        </div>
-        <div class="well well-sm">
-        <%= link_to "Company Leaderboard", '/leaderboard' %> 
-        </div>
-        <div class="well well-sm">
-          <p>Company Lookup</p>
-          <input type="text" class="form-control">
-          <p>Trending:</p>
-          <ul>
-            <li>Facebook</li>
-            <li>Exxon Mobil</li>
-            <li>Qualcomm</li>
-          </ul>
-        </div>
+    <div class="well well-sm">
+      <%# was @user.name, @user.email but that was nil %>
+      <h4><%= current_user.name %>, <%= current_user.email %></h4>
+      <p> <%= link_to "View Detailed Feedback", myfeedback_path(current_user) %> </p> <%# I didn't need to define a myfeedback_path - it just went to users/myfeedback.html.erb %>
+      <%# an example of going to a secure page= link_to "Settings", edit_user_path(current_user) %>
+    </div>
+    <div class="well well-sm">
+      <p>Search Projects or Colleague</p>
+      <input type="text" class="form-control">
+      <p></p>
+      <a class="btn btn-primary btn-sm">Search</a>
+      <br><p></p>
+      <p><%= link_to "New colleague", '#' %> <%#createuser_path(current_user) %></p>
+      
+      <p><%= link_to "New project / strategy / effort", newproject_path %></p>
 
     </div>
+    <div class="well well-sm">
+      <%= link_to "Company Leaderboard", '/leaderboard' %> 
+    </div>
+    <div class="well well-sm">
+      <%= link_to "Promote my profile", '#'%>
+    </div>
+
+</div>
 

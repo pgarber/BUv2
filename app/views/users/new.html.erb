@@ -1,11 +1,13 @@
 <div class="wrapper body">
   <div class="container"
     <% provide(:title, 'Sign up') %>
-    <h1>Sign up</h1>
+
 
     <div class="row">
-      <div class="span6 offset3">
-        <%= form_for(@user) do |f| %>
+      <div class="col-sm-6 col-sm-offset-3">
+          <h1>Sign up for your company's BumptUp</h1>
+          <h3>Sign up is quick, free, and anonymous</h3>
+          <%= form_for(@user) do |f| %>
           <%= render 'shared/error_messages', object: f.object %>
 
           <%= f.label :name %>

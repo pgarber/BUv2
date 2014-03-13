@@ -245,3 +245,9 @@ $ git push heroku master
 3/12/14: 
 I don't like the wide view, so get rid of this section from bootstrap.css: @media (min-width: 1200px) {
 
+3/13/14: 
+layout improvements: on pages that were too wide, put       <div class="col-sm-6 col-sm-offset-3"> beacuse col-6 col-offset-3 stopped working
+make backoground gray F5F5F5 and wells white (switched the two).  
+custom1.css: .body-inverse { background: #F5F5F5;
+.footer-wrapper { background: #F5F5F5;
+bootstrap.css:   .well { ... background-color: #fff;

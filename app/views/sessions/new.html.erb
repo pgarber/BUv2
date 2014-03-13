@@ -1,12 +1,14 @@
 <div class="wrapper body">
   <div class="container"<% provide(:title, "Sign in") %>
-	<h1>Sign in</h1>
+
 
 	<div class="row">
-		<div class="span6 offset3">
+		<!-- <div class="span6 offset3"> # this no longer works ??-->
+		<div class="col-sm-6 col-sm-offset-3">
+			<h1>Sign in</h1>
 			<%= form_for(:session, url: sessions_path) do |f| %>
 
-			  <%= f.label :email %>
+			  <%= f.label "Work email address" %>
 			  <%= f.text_field :email %>
 
 			  <%= f.label :password %>

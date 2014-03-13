@@ -1,76 +1,63 @@
-<!doctype html>
 
-<html>
-  
-  <head>
-    <meta name="viewport" content="width=device-width">
-    <!-- <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"> -->
-    <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %> <%# need this on any page that has a chart %>
-
-  </head>
-  
-  <body>
-
-   
-    <div class="wrapper body-inverse"> <!-- or body-inverse -->
-    <div class="container">
-      <div class="row">
-        <%= render "users/signed_in_sidebar" %>  
-        
-        <div class="col-md-8">
-
-          <% projects_to_graph() %> <%# call a function in projects_helper that sets a list of project id's to show ratings graphs for on the homepage %>
-          <% @show_project_id.each do |project_id| %>                  
-            <div class="well well-sm">
-              <% project = Project.find_by(id: project_id) %>  
-              <p><b><%= project.name %> </b></p>
-                <% graph_project_data(project_id) %>  
-                <% if @all_rating_data.any? %>
-                  <%= bar_chart @all_rating_data, :height => "200px"%> <%# call chartkick %>
-                <% else %>
-                  <b> No projects with ratings yet. Give input to your <%= link_to "Projects", projects_path %> </b>
-                <% end %>  
-            </div>
-          <% end %>
-          <%# ##### below code isn't working, I believe %>
-          <% if @show_project_id.size.to_i < 1 %>
-            <div class="well well-sm"> <b> No projects with ratings yet. Give input to your <%= link_to "Projects", projects_path %> </b>
-            </div>
-          <% end %>         
-          
-          <!-- <ul class="coworker_charts">  -->
-            <%#= render @users %>
-
-                    <%#= will_paginate %>
-          <% users_to_graph() %> <%# call a function in users_helper that sets a list of user_id's to show ratings graphs for on the homepage %>
-          <% @show_user_id.each do |user_id| %>                  
-            <div class="well well-sm">
-              <% user = User.find_by(id: user_id) %>  
-              <p><b><%= user.name + " | " + user.email %> </b></p>
-              <% graph_data(user_id) %>  <%# get the top 5 attributes for this user and set them in @show_attributes %>
-              <% if @show_attributes.any? %>
-                <%= bar_chart @show_attributes, :height => "200px"%> <%# call chartkick %>
-              <% else %>
-                <b> No colleagues with ratings yet. Give input to your <%= link_to "Colleagues", users_path %> </b>
-              <% end %>                 
-            </div>
-          <% end %>
-          <% if @show_user_id.size.to_i < 1 %>
-            <div class="well well-sm"> <b> No colleagues with ratings yet. Give input to your <%= link_to "Colleagues", users_path %> </b>
-            </div>
-          <% end %>  
+<!-- <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"> -->
+<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %> <%# need this on any page that has a chart %>
 
 
-          
+
+
+<div class="wrapper body-inverse"> <!-- or body-inverse -->
+<div class="container">
+  <div class="row">
+    <%= render "users/signed_in_sidebar" %>  
+    
+    <div class="col-md-8">
+
+      <% projects_to_graph() %> <%# call a function in projects_helper that sets a list of project id's to show ratings graphs for on the homepage %>
+      <% @show_project_id.each do |project_id| %>                  
+        <div class="well well-sm">
+          <% project = Project.find_by(id: project_id) %>  
+          <p><b><%= project.name %> </b></p>
+            <% graph_project_data(project_id) %>  
+            <% if @all_rating_data.any? %>
+              <%= bar_chart @all_rating_data, :height => "200px"%> <%# call chartkick %>
+            <% else %>
+              <b> No projects with ratings yet. Give input to your <%= link_to "Projects", projects_path %> </b>
+            <% end %>  
         </div>
-      </div>
-      <hr>
+      <% end %>
+      <%# ##### below code isn't working, I believe %>
+      <% if @show_project_id.size.to_i < 1 %>
+        <div class="well well-sm"> <b> No projects with ratings yet. Give input to your <%= link_to "Projects", projects_path %> </b>
+        </div>
+      <% end %>         
+      
+      <!-- <ul class="coworker_charts">  -->
+        <%#= render @users %>
 
-    </div><!-- /container -->
-    </div><!-- /wrapper -->
-  </body>
+                <%#= will_paginate %>
+      <% users_to_graph() %> <%# call a function in users_helper that sets a list of user_id's to show ratings graphs for on the homepage %>
+      <% @show_user_id.each do |user_id| %>                  
+        <div class="well well-sm">
+          <% user = User.find_by(id: user_id) %>  
+          <p><b><%= user.name + " | " + user.email %> </b></p>
+          <% graph_data(user_id) %>  <%# get the top 5 attributes for this user and set them in @show_attributes %>
+          <% if @show_attributes.any? %>
+            <%= bar_chart @show_attributes, :height => "200px"%> <%# call chartkick %>
+          <% else %>
+            <b> No colleagues with ratings yet. Give input to your <%= link_to "Colleagues", users_path %> </b>
+          <% end %>                 
+        </div>
+      <% end %>
+      <% if @show_user_id.size.to_i < 1 %>
+        <div class="well well-sm"> <b> No colleagues with ratings yet. Give input to your <%= link_to "Colleagues", users_path %> </b>
+        </div>
+      <% end %>  
 
 
+      
+    </div>
+  </div>
+  <hr>
 
-
-</html>
+</div><!-- /container -->
+</div><!-- /wrapper -->

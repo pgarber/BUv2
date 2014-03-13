@@ -15,16 +15,20 @@
     </div>
     <div class="navbar-collapse collapse">
     
-    <% if signed_in? %>
+      <% if signed_in? %>
 
         <ul class="nav navbar-nav">
           <li><%= link_to "Home", root_path %></li>
           <li><%= link_to "Colleagues", users_path %></li>
           <li><%= link_to "Projects", projects_path %></li>
-        </ul>
-
           <!-- ideas link will go here --> 
 
+          <!-- temp until dropdown works -->
+          <li><%= link_to "Profile", current_user %></li>
+          <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+          <li class="divider"></li>
+          <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
+        </ul>
 
           <!-- make the rest pull right --> 
         <ul class="nav navbar-nav pull-right">  
@@ -39,10 +43,10 @@
               <li class="divider"></li>
               <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
             </ul>
-
-            <li><%= link_to current_user.email, root_path %></li>
-
           </li>
+
+          <li><%= link_to current_user.email, root_path %></li>
+
         </ul>
 
       <% else %>

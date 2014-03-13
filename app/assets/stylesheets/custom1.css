@@ -14,7 +14,7 @@ body {
 	padding: 0;
 }
 .body-inverse {
-	background: #FFF;
+	background: #F5F5F5;
 }
 
 /* ===== Sticky Footer Trick ===== */
@@ -28,7 +28,7 @@ body {
 	padding-bottom: 91px; /* avoiding content go behind the footer */
 }
 .footer-wrapper {
-	background: #FFF; /* for body-inverse */
+	background: #F5F5F5; /* for body-inverse */
 }
 .footer-wrapper hr {
 	border-color: #ddd;
